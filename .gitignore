@@ -1,5 +1,10 @@
 # 로컬 도구/미리보기 설정
 .claude/
 
+# Vercel
+.vercel/
+
 # 디자인 원본(배포 불필요)
 B_Soft_Clinic.html
+
+.vercel
