@@ -10,7 +10,7 @@
  */
 
 var SHEET_NAME = '신청';
-var HEADERS = ['신청일시', '이름', '나이', '인스타그램', '휴대폰', '이메일', '방문가능일정', '2차활용동의'];
+var HEADERS = ['신청일시', '이름', '인스타그램', '휴대폰', '이메일', '방문가능일정', '2차활용동의'];
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -36,7 +36,6 @@ function doPost(e) {
     sheet.appendRow([
       new Date(),
       d.name || '',
-      d.age || '',
       d.instagram || '',
       d.phone || '',
       d.email || '',

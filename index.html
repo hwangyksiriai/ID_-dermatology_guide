@@ -415,7 +415,6 @@
         <p class="apply-intro">마감 없이 <strong>상시 모집</strong>되며, 촬영·방문 일정은 선정 후 1:1로 협의합니다. 2차 활용 동의 후 제출이 가능하고, 선정 결과는 개별 안내드립니다.</p>
         <form class="form" id="applyForm" onsubmit="submitForm(event)">
           <div class="field"><label>이름 <span class="star">*</span></label><input type="text" name="name" required autocomplete="name" placeholder="홍길동"></div>
-          <div class="field"><label>나이 <span class="star">*</span></label><input type="number" name="age" required min="1" max="120" inputmode="numeric" placeholder="27"></div>
           <div class="field"><label>인스타그램 링크 <span class="star">*</span></label><input type="text" name="instagram" required placeholder="https://instagram.com/your_id"></div>
           <div class="field"><label>휴대폰 번호 <span class="star">*</span></label><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" maxlength="13" oninput="fmtPhone(this)" placeholder="010-1234-5678"></div>
           <div class="field"><label>이메일 <span style="color:var(--faint);font-weight:500">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
@@ -437,11 +436,11 @@
       </div>
       <div class="form-done" id="formDone">
         <div class="fd-check">✓</div>
-        <h3>신청이 접수되었습니다</h3>
-        <p>소중한 신청 감사합니다.<br>검토 후 선정 결과를 개별적으로 안내드리겠습니다.</p>
+        <h3>신청이 완료되었습니다</h3>
+        <p>소중한 신청 감사합니다.<br>선정되시면 병원에서 개별적으로 안내드릴 예정입니다.</p>
       </div>
     </div>
-    <p class="legal">※ 제출하신 개인정보(이름·나이·연락처·인스타그램·이메일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
+    <p class="legal">※ 제출하신 개인정보(이름·연락처·인스타그램·이메일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
   </section>
 
   <footer>
@@ -496,7 +495,7 @@ async function submitForm(ev){
   var visits = Array.prototype.slice.call(form.querySelectorAll('input[name="visit"]:checked')).map(function(c){ return c.value; });
   if(visits.length === 0){ alert('방문 가능 일정을 한 개 이상 선택해 주세요.'); return; }
   var payload = {
-    name:f['name'].value.trim(), age:f['age'].value.trim(), instagram:f['instagram'].value.trim(),
+    name:f['name'].value.trim(), instagram:f['instagram'].value.trim(),
     phone:f['phone'].value.trim(), email:f['email'].value.trim(),
     visit:visits.join(', '), consent:f['consent'].checked
   };
