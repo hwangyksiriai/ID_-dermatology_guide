@@ -5,11 +5,12 @@
  * 이 코드를 신청 데이터를 받을 구글시트의 [확장 프로그램 > Apps Script]에 붙여넣고
  * "배포 > 새 배포 > 웹 앱"으로 배포하세요. (액세스 권한: 모든 사용자)
  *
- * 시트와 헤더는 최초 신청 시 자동으로 생성됩니다.
+ * 시트와 헤더는 자동으로 생성/동기화됩니다.
+ * (헤더가 코드와 다르면 1행이 자동으로 갱신됩니다 — 컬럼을 추가해도 시트를 비울 필요 없음)
  */
 
 var SHEET_NAME = '신청';
-var HEADERS = ['신청일시', '이름', '나이', '인스타그램', '휴대폰', '이메일', '2차활용동의'];
+var HEADERS = ['신청일시', '이름', '나이', '인스타그램', '휴대폰', '이메일', '방문가능일정', '2차활용동의'];
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -18,9 +19,16 @@ function doPost(e) {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
 
-    // 헤더가 없으면 자동 생성
+    // 헤더 보장/동기화 — 비어있거나 코드의 헤더와 다르면 1행을 갱신
+    var needHeader = false;
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(HEADERS);
+      needHeader = true;
+    } else {
+      var cur = sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+      if (cur.join('|') !== HEADERS.join('|')) needHeader = true;
+    }
+    if (needHeader) {
+      sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
       sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
     }
 
@@ -32,6 +40,7 @@ function doPost(e) {
       d.instagram || '',
       d.phone || '',
       d.email || '',
+      d.visit || '',
       d.consent ? '동의' : '미동의'
     ]);
 

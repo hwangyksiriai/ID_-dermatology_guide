@@ -180,6 +180,13 @@
   .form-done .fd-check{ width:52px; height:52px; border-radius:50%; background:var(--accent); color:#fff; font-size:24px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
   .form-done h3{ font-size:18px; font-weight:800; color:var(--ink); margin-bottom:10px; }
   .form-done p{ font-size:13px; color:var(--body); line-height:1.8; }
+  .opt{ font-size:10px; font-weight:500; color:var(--muted); }
+  .checks{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .check{ display:flex; align-items:center; gap:8px; background:#F7F5F1; border:1px solid var(--line); border-radius:12px; padding:11px 13px; cursor:pointer; transition:background .15s, border-color .15s; }
+  .check.on{ background:var(--tint); border-color:var(--accent); }
+  .checks input{ width:17px; height:17px; flex-shrink:0; margin:0; padding:0; accent-color:var(--accent); cursor:pointer; }
+  .check span{ font-size:12.5px; color:var(--ink); }
+  .check.on span{ color:var(--accent-deep); font-weight:700; }
 
   /* FOOTER */
   footer{ padding:20px 22px 26px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); }
@@ -412,6 +419,15 @@
           <div class="field"><label>인스타그램 링크 <span class="star">*</span></label><input type="text" name="instagram" required placeholder="https://instagram.com/your_id"></div>
           <div class="field"><label>휴대폰 번호 <span class="star">*</span></label><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" maxlength="13" oninput="fmtPhone(this)" placeholder="010-1234-5678"></div>
           <div class="field"><label>이메일 <span style="color:var(--faint);font-weight:500">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
+          <div class="field">
+            <label>방문 가능 일정 <span class="star">*</span> <span class="opt">(중복 선택 가능)</span></label>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="visit" value="평일 오전" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>평일 오전</span></label>
+              <label class="check"><input type="checkbox" name="visit" value="평일 오후" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>평일 오후</span></label>
+              <label class="check"><input type="checkbox" name="visit" value="평일 저녁" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>평일 저녁</span></label>
+              <label class="check"><input type="checkbox" name="visit" value="주말" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>주말</span></label>
+            </div>
+          </div>
           <label class="consent" for="consent">
             <input type="checkbox" id="consent" name="consent" onchange="consentToggle(this)">
             <span><b>[필수] 2차 활용 동의</b> — 제작한 콘텐츠가 ID 피부과의 광고·공식 채널(인스타그램, 홈페이지 등)에 재사용되는 것에 동의합니다. 업로드 후 최소 3개월간 게시물을 유지합니다.</span>
@@ -474,11 +490,15 @@ function fmtPhone(el){
 })();
 async function submitForm(ev){
   ev.preventDefault();
-  var f = ev.target.elements;
+  var form = ev.target;
+  var f = form.elements;
   if(!f['consent'].checked) return;
+  var visits = Array.prototype.slice.call(form.querySelectorAll('input[name="visit"]:checked')).map(function(c){ return c.value; });
+  if(visits.length === 0){ alert('방문 가능 일정을 한 개 이상 선택해 주세요.'); return; }
   var payload = {
     name:f['name'].value.trim(), age:f['age'].value.trim(), instagram:f['instagram'].value.trim(),
-    phone:f['phone'].value.trim(), email:f['email'].value.trim(), consent:f['consent'].checked
+    phone:f['phone'].value.trim(), email:f['email'].value.trim(),
+    visit:visits.join(', '), consent:f['consent'].checked
   };
   var btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.textContent = '제출 중...';
