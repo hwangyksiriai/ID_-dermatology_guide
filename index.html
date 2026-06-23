@@ -181,12 +181,10 @@
   .form-done h3{ font-size:18px; font-weight:800; color:var(--ink); margin-bottom:10px; }
   .form-done p{ font-size:13px; color:var(--body); line-height:1.8; }
   .opt{ font-size:10px; font-weight:500; color:var(--muted); }
-  .checks{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .check{ display:flex; align-items:center; gap:8px; background:#F7F5F1; border:1px solid var(--line); border-radius:12px; padding:11px 13px; cursor:pointer; transition:background .15s, border-color .15s; }
-  .check.on{ background:var(--tint); border-color:var(--accent); }
-  .checks input{ width:17px; height:17px; flex-shrink:0; margin:0; padding:0; accent-color:var(--accent); cursor:pointer; }
-  .check span{ font-size:12.5px; color:var(--ink); }
-  .check.on span{ color:var(--accent-deep); font-weight:700; }
+  .dates{ display:flex; flex-direction:column; gap:8px; }
+  .date-row{ display:flex; align-items:center; gap:10px; }
+  .date-rank{ font-size:11px; font-weight:700; color:var(--accent); width:44px; flex-shrink:0; }
+  .dates input{ flex:1; min-width:0; }
 
   /* FOOTER */
   footer{ padding:20px 22px 26px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); }
@@ -419,12 +417,11 @@
           <div class="field"><label>휴대폰 번호 <span class="star">*</span></label><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" maxlength="13" oninput="fmtPhone(this)" placeholder="010-1234-5678"></div>
           <div class="field"><label>이메일 <span style="color:var(--faint);font-weight:500">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
           <div class="field">
-            <label>방문 가능 일정 <span class="star">*</span> <span class="opt">(중복 선택 가능)</span></label>
-            <div class="checks">
-              <label class="check"><input type="checkbox" name="visit" value="평일 오전" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>평일 오전</span></label>
-              <label class="check"><input type="checkbox" name="visit" value="평일 오후" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>평일 오후</span></label>
-              <label class="check"><input type="checkbox" name="visit" value="평일 저녁" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>평일 저녁</span></label>
-              <label class="check"><input type="checkbox" name="visit" value="주말" onchange="this.closest('.check').classList.toggle('on',this.checked)"><span>주말</span></label>
+            <label>방문 희망일 <span class="star">*</span> <span class="opt">(가능한 날짜를 순서대로, 최대 3개)</span></label>
+            <div class="dates">
+              <div class="date-row"><span class="date-rank">1순위</span><input type="date" name="d1" required></div>
+              <div class="date-row"><span class="date-rank">2순위</span><input type="date" name="d2"></div>
+              <div class="date-row"><span class="date-rank">3순위</span><input type="date" name="d3"></div>
             </div>
           </div>
           <label class="consent" for="consent">
@@ -476,6 +473,13 @@ function fmtPhone(el){
   else if(v.length < 8){ el.value = v.slice(0,3)+'-'+v.slice(3); }
   else { el.value = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
 }
+
+/* 방문 희망일: 오늘 이전 날짜 선택 방지 */
+(function(){
+  var t = new Date();
+  var iso = t.getFullYear() + '-' + ('0'+(t.getMonth()+1)).slice(-2) + '-' + ('0'+t.getDate()).slice(-2);
+  document.querySelectorAll('.dates input[type=date]').forEach(function(i){ i.min = iso; });
+})();
 (function(){
   var bar = document.getElementById('ctaBar');
   var apply = document.getElementById('apply');
@@ -492,12 +496,12 @@ async function submitForm(ev){
   var form = ev.target;
   var f = form.elements;
   if(!f['consent'].checked) return;
-  var visits = Array.prototype.slice.call(form.querySelectorAll('input[name="visit"]:checked')).map(function(c){ return c.value; });
-  if(visits.length === 0){ alert('방문 가능 일정을 한 개 이상 선택해 주세요.'); return; }
+  var dates = ['d1','d2','d3'].map(function(n){ return f[n] && f[n].value ? f[n].value : ''; }).filter(Boolean);
+  if(dates.length === 0){ alert('방문 희망일을 한 개 이상 선택해 주세요.'); return; }
   var payload = {
     name:f['name'].value.trim(), instagram:f['instagram'].value.trim(),
     phone:f['phone'].value.trim(), email:f['email'].value.trim(),
-    visit:visits.join(', '), consent:f['consent'].checked
+    visit:dates.join(', '), consent:f['consent'].checked
   };
   var btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.textContent = '제출 중...';
