@@ -4,207 +4,243 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ID 피부과 × SIRIAI — 인플루언서 릴스 가이드 2026</title>
+<meta name="description" content="ID 피부과 휴니드 스킨부스터 릴스 캠페인 가이드. 시술 제공형, 상시 모집.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Nanum+Myeongjo:wght@400;700;800&family=Song+Myung&family=Hahmlet:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
   :root{
-    --ink:#2E322F; --body:#6E685F; --muted:#9E9890; --faint:#B3ABA0;
-    --line:#ECE7E0; --paper:#fff; --bg:#FBFAF8; --shell:#EFEBE4;
-    --accent:#3E9B82; --accent-deep:#52765b; --tint:#EAF5F0; --price:#d8efe4;
+    --bg:#F4F0E8; --paper:#FCFAF4; --ink:#211E1A; --body:#6E675C; --muted:#A39B8C; --faint:#C3BBAB;
+    --line:#E6DFD1; --shell:#E9E3D7;
+    --accent:#A8553F; --accent-deep:#8C4231; --tint:#EFE5DC; --tint-deep:#E7D9CC;
+    --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+    --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+    --quote-font:'Hahmlet',serif; --quote-weight:600; --quote-mark-style:normal;
   }
   html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
   body{
-    background:var(--shell); color:var(--ink);
-    font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+    background:var(--shell); color:var(--ink); font-family:var(--sans);
     -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color:transparent; line-height:1.5;
     word-break:keep-all; overflow-wrap:break-word;
   }
-  .page{ max-width:460px; margin:0 auto; background:var(--bg); min-height:100vh; padding-bottom:96px; box-shadow:0 0 60px rgba(46,50,47,.08); }
-  details > summary{ list-style:none; cursor:pointer; }
-  details > summary::-webkit-details-marker{ display:none; }
-  .vb-mark{ transition:transform .25s ease; }
-  details[open] .vb-mark{ transform:rotate(45deg); }
+  .page{ max-width:480px; margin:0 auto; background:var(--bg); min-height:100vh; padding-bottom:104px; box-shadow:0 0 80px rgba(33,30,26,.10); overflow:hidden; }
+  details>summary{ list-style:none; cursor:pointer; }
+  details>summary::-webkit-details-marker{ display:none; }
+
+  .eyebrow{ font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); }
+  .num-serif{ font-family:var(--serif); font-weight:400; font-style:italic; line-height:1; }
 
   /* NAV */
-  nav{ display:flex; justify-content:space-between; align-items:center; padding:20px 22px; }
-  .nav-logo{ font-size:13px; font-weight:800; letter-spacing:.14em; color:var(--ink); }
-  .nav-label{ font-size:9.5px; font-weight:600; letter-spacing:.06em; color:var(--muted); background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:5px 11px; }
+  nav{ display:flex; justify-content:space-between; align-items:center; padding:22px 24px 4px; }
+  .nav-logo{ font-size:13px; font-weight:700; letter-spacing:.16em; color:var(--ink); }
+  .nav-label{ font-family:var(--serif); font-style:italic; font-size:16px; color:var(--accent); letter-spacing:.01em; }
 
-  /* HERO */
-  .hero{ padding:26px 22px 22px; }
-  .hero-eyebrow{ display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; color:var(--accent); background:var(--tint); border-radius:20px; padding:6px 13px; margin-bottom:18px; }
-  h1{ font-size:clamp(38px,11vw,46px); font-weight:800; line-height:1.02; letter-spacing:-0.03em; color:var(--ink); margin-bottom:8px; }
-  h1 .dot{ color:var(--accent); }
-  .hero-sub{ font-size:17px; font-weight:400; letter-spacing:.04em; color:#8E887F; margin-bottom:18px; }
-  .hero-desc{ font-size:14px; line-height:1.85; color:var(--body); text-wrap:pretty; }
-  .hero-desc strong{ color:var(--ink); font-weight:700; }
-
-  .banner{ display:block; width:calc(100% - 44px); margin:0 22px 24px; height:auto; border-radius:20px; }
+  /* HERO — full-bleed image */
+  .hero-full{ position:relative; min-height:86vh; max-height:780px; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; background:#1b1916; }
+  .hero-full img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:38% 22%; }
+  .hero-full .tint{ position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(to bottom, rgba(27,25,22,.52) 0%, rgba(27,25,22,.18) 26%, rgba(27,25,22,.30) 55%, rgba(27,25,22,.82) 100%); }
+  .hero-full .wm{ position:absolute; top:4.5%; left:0; right:0; z-index:2; text-align:center; pointer-events:none;
+    font-family:var(--serif); font-style:italic; font-size:clamp(96px,33vw,168px); line-height:.8; letter-spacing:-0.02em; color:rgba(200,108,84,.62); mix-blend-mode:screen; }
+  .hero-full .ov{ position:relative; z-index:3; padding:0 26px 40px; }
+  .hero-full .ov .kick{ display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+  .hero-full .ov .kick .eyebrow{ color:#F0C9BC; }
+  .hero-full .ov .kick span.line{ flex:1; height:1px; background:rgba(252,250,244,.32); }
+  .hero-full .ov .kick .yr{ color:rgba(252,250,244,.6); }
+  .hero-full .ov h1{ font-family:var(--serif); font-weight:400; font-size:clamp(60px,20vw,96px); line-height:0.82; letter-spacing:-0.01em; color:#FCFAF4; text-shadow:0 2px 30px rgba(0,0,0,.35); }
+  .hero-full .ov h1 em{ font-style:italic; }
+  .hero-full .ov h1 .amp{ color:#F2A488; }
+  .hero-full .ov .kr-title{ margin-top:20px; font-size:20px; font-weight:800; letter-spacing:-0.03em; color:#FCFAF4; }
+  .hero-full .ov .kr-title b{ color:#F2A488; font-weight:800; }
+  /* LEDE (below hero) */
+  .lede-wrap{ padding:30px 24px 34px; }
+  .lede-wrap .lede{ font-size:15px; line-height:1.9; color:var(--body); text-wrap:pretty; max-width:40ch; }
+  .lede-wrap .lede strong{ color:var(--ink); font-weight:700; }
 
   /* META */
-  .meta-grid{ padding:0 22px; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px; }
-  .meta-cell{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:16px 18px; }
-  .meta-label{ font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:7px; }
-  .meta-value{ font-size:14px; font-weight:700; color:var(--ink); }
-  .meta-value small{ display:block; font-size:11px; font-weight:500; color:var(--muted); margin-top:2px; }
+  .meta{ display:grid; grid-template-columns:1fr 1fr; }
+  .meta-cell{ padding:20px 22px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); }
+  .meta-cell:nth-child(2n){ border-right:none; }
+  .meta-cell .ic{ font-size:18px; line-height:1; margin-bottom:12px; display:block; }
+  .meta-cell .k{ font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+  .meta-cell .v{ font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.01em; }
+  .meta-cell .v small{ display:block; font-size:11.5px; font-weight:500; color:var(--body); margin-top:3px; letter-spacing:0; }
+
+  /* SECTION SCAFFOLD */
+  section.block{ padding:42px 24px; }
+  .sec-head{ margin-bottom:24px; }
+  .sec-head .top{ display:flex; align-items:baseline; gap:12px; margin-bottom:11px; }
+  .sec-head .no{ font-family:var(--serif); font-style:italic; font-size:30px; color:var(--accent); line-height:1; }
+  .sec-head .label{ font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .sec-head h2{ font-size:24px; font-weight:800; letter-spacing:-0.035em; color:var(--ink); line-height:1.2; }
+  .sec-head .sub{ margin-top:10px; font-size:13px; line-height:1.7; color:var(--body); text-wrap:pretty; }
 
   /* SUMMARY */
-  .summary{ padding:0 22px; display:flex; flex-direction:column; gap:12px; margin-bottom:30px; }
-  .sum-card{ border-radius:18px; padding:20px; }
-  .sum-card.get{ background:var(--tint); }
-  .sum-card.todo{ background:var(--paper); border:1px solid var(--line); }
-  .sum-eyebrow{ display:flex; align-items:center; gap:9px; font-size:14px; font-weight:800; color:var(--ink); margin-bottom:14px; }
-  .sum-eyebrow .mk{ width:24px; height:24px; border-radius:50%; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .sum-card.get .mk{ background:var(--accent); }
-  .sum-card.todo .mk{ background:var(--ink); }
-  .sum-card ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
-  .sum-card li{ font-size:12.5px; line-height:1.55; color:#5E6660; padding-left:16px; position:relative; text-wrap:pretty; }
-  .sum-card li::before{ content:''; position:absolute; left:0; top:6px; width:6px; height:6px; border-radius:50%; }
-  .sum-card.get li::before{ background:var(--accent); }
-  .sum-card.todo li::before{ background:#C4BDB2; }
-  .sum-card li b{ color:var(--ink); font-weight:700; }
-
-  /* BLOCK */
-  .block{ padding:0 22px 30px; }
-  .block-head{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-  .block-num{ width:26px; height:26px; border-radius:50%; background:var(--accent); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .block-title{ font-size:18px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
-  .block-desc{ font-size:12.5px; line-height:1.7; color:var(--muted); margin:0 0 16px 36px; }
+  .summary{ display:flex; flex-direction:column; gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .sum{ background:var(--bg); padding:26px 24px; }
+  .sum.get{ background:var(--tint); }
+  .sum-h{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .sum-h .mk{ font-family:var(--serif); font-style:italic; font-size:24px; line-height:1; color:var(--accent); }
+  .sum.todo .sum-h .mk{ color:var(--ink); }
+  .sum-h b{ font-size:14px; font-weight:800; letter-spacing:.02em; color:var(--ink); }
+  .sum-h .en{ font-family:var(--serif); font-style:italic; font-size:14px; color:var(--muted); margin-left:auto; }
+  .sum ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+  .sum li{ font-size:13px; line-height:1.6; color:var(--body); padding-left:18px; position:relative; text-wrap:pretty; }
+  .sum li::before{ content:''; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .sum.todo li::before{ background:var(--faint); }
+  .sum li b{ color:var(--ink); font-weight:700; }
 
   /* CALLOUT */
-  .callout{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; }
-  .callout .quote{ font-size:17px; font-weight:800; color:var(--ink); line-height:1.45; letter-spacing:-0.01em; margin-bottom:13px; display:block; }
-  .callout p{ font-size:13px; line-height:1.85; color:var(--body); text-wrap:pretty; }
+  .callout .quote{ font-family:var(--quote-font, var(--sans)); font-weight:var(--quote-weight,800); font-size:var(--quote-size,25px); color:var(--ink); line-height:1.42; letter-spacing:-0.03em; margin-bottom:18px; text-wrap:balance; }
+  .callout .quote .mark{ font-family:inherit; font-style:var(--quote-mark-style,normal); font-weight:inherit; color:var(--accent); }
+  .callout p{ font-size:13.5px; line-height:1.9; color:var(--body); text-wrap:pretty; }
   .callout p .hl{ color:var(--accent); font-weight:700; }
   .callout p strong{ color:var(--ink); font-weight:700; }
+  .rule{ height:1px; background:var(--line); margin:30px 0; }
 
   /* OFFER */
-  .offer{ background:var(--accent-deep); border-radius:18px; padding:22px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px 16px; flex-wrap:wrap; margin-bottom:12px; }
-  .offer-name small{ font-size:11px; font-weight:500; color:#A9B0A8; display:block; margin-bottom:5px; }
-  .offer-name b{ font-size:21px; font-weight:800; letter-spacing:-0.02em; color:#fff; }
-  .offer-price{ text-align:right; }
-  .offer-price .pp{ font-size:21px; font-weight:800; letter-spacing:-0.02em; color:var(--price); }
-  .offer-price .ps{ display:block; font-size:10px; color:#A9B0A8; margin-top:2px; }
-  .proc{ display:flex; flex-direction:column; gap:10px; }
-  .proc-cell{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px 18px; display:flex; gap:14px; align-items:flex-start; }
-  .proc-n{ font-size:11px; font-weight:800; color:var(--accent); flex-shrink:0; padding-top:1px; }
-  .proc-t{ font-size:14px; font-weight:800; color:var(--ink); margin-bottom:3px; }
-  .proc-d{ font-size:12px; line-height:1.6; color:var(--body); }
+  .offer{ background:var(--ink); border-radius:4px; padding:26px 24px; display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:16px; }
+  .offer .nm small{ font-size:11px; font-weight:500; color:#A79E91; display:block; margin-bottom:7px; letter-spacing:.08em; text-transform:uppercase; }
+  .offer .nm b{ font-size:21px; font-weight:800; letter-spacing:-0.02em; color:#FCFAF4; }
+  .offer .pr{ text-align:right; flex-shrink:0; }
+  .offer .pr .pp{ font-family:var(--serif); font-style:italic; font-size:34px; color:var(--tint-deep); line-height:.9; }
+  .offer .pr .ps{ display:block; font-size:10.5px; color:#A79E91; margin-top:5px; letter-spacing:.04em; }
+  .steps{ display:flex; flex-direction:column; }
+  .step{ display:flex; gap:18px; align-items:flex-start; padding:18px 2px; border-bottom:1px solid var(--line); }
+  .step:last-child{ border-bottom:none; }
+  .step .sn{ font-family:var(--serif); font-style:italic; font-size:26px; color:var(--accent); line-height:1; flex-shrink:0; width:34px; }
+  .step .st{ font-size:15px; font-weight:800; color:var(--ink); margin-bottom:4px; letter-spacing:-0.01em; }
+  .step .sd{ font-size:12.5px; line-height:1.65; color:var(--body); }
 
   /* DIFF */
-  .diff{ display:flex; flex-direction:column; gap:12px; }
-  .diff-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:22px; }
-  .diff-tag{ display:inline-block; font-size:9px; font-weight:700; letter-spacing:.08em; color:var(--accent); background:var(--tint); border-radius:20px; padding:4px 10px; margin-bottom:12px; }
-  .diff-h{ font-size:17px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); margin-bottom:9px; }
+  .diff{ display:flex; flex-direction:column; gap:14px; }
+  .diff-card{ background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:24px; }
+  .diff-tag{ display:inline-block; font-family:var(--serif); font-style:italic; font-size:15px; color:var(--accent); margin-bottom:12px; }
+  .diff-h{ font-size:19px; font-weight:800; letter-spacing:-0.03em; color:var(--ink); margin-bottom:11px; }
   .diff-h .dot{ color:var(--accent); }
-  .diff-p{ font-size:12.5px; line-height:1.75; color:var(--body); text-wrap:pretty; }
+  .diff-p{ font-size:12.5px; line-height:1.8; color:var(--body); text-wrap:pretty; }
   .diff-p b{ color:var(--ink); font-weight:700; }
-  .diff-link{ display:inline-flex; align-items:center; gap:5px; margin-top:13px; font-size:11px; font-weight:700; color:var(--accent); text-decoration:none; }
-  .diff-link:hover{ opacity:.7; }
-  .diff-lead{ font-size:13.5px; line-height:1.8; color:var(--body); background:var(--tint); border:1px solid var(--line); border-radius:14px; padding:15px 18px; margin-bottom:14px; text-wrap:pretty; }
-  .diff-lead b{ color:var(--accent-deep); font-weight:700; }
+  .diff-link{ display:inline-flex; align-items:center; gap:5px; margin-top:15px; font-size:11px; font-weight:700; letter-spacing:.03em; color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px; }
+  .diff-link:hover{ opacity:.65; }
 
   /* ACCORDION */
-  .accordion{ display:flex; flex-direction:column; gap:10px; }
-  .acc-item{ background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
-  .acc-header{ display:flex; align-items:center; gap:12px; padding:16px 18px; }
-  .acc-num{ width:30px; height:30px; border-radius:50%; background:#F4F1EC; color:#B3ABA0; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .acc-item[open] .acc-num{ background:var(--tint); color:var(--accent); }
+  .accordion{ border-top:1px solid var(--line); }
+  .acc-item{ border-bottom:1px solid var(--line); }
+  .acc-header{ display:flex; align-items:center; gap:16px; padding:20px 2px; }
+  .acc-num{ font-family:var(--serif); font-style:italic; font-size:28px; color:var(--faint); line-height:1; flex-shrink:0; width:40px; transition:color .2s; }
+  .acc-item[open] .acc-num{ color:var(--accent); }
   .acc-titles{ flex:1; min-width:0; }
-  .acc-title{ display:block; font-size:13.5px; font-weight:700; color:var(--ink); }
-  .acc-subtitle{ display:block; font-size:11px; color:var(--muted); margin-top:1px; }
-  .vb-mark{ font-size:16px; color:var(--accent); font-weight:300; }
-  .acc-panel{ padding:0 18px 18px 60px; }
-  .concept-text{ font-size:12px; line-height:1.8; color:var(--body); margin-bottom:12px; text-wrap:pretty; }
-  .guide-steps{ display:flex; flex-direction:column; gap:8px; }
-  .guide-step{ display:flex; gap:9px; }
-  .guide-n{ font-size:10px; font-weight:800; color:var(--accent); width:16px; flex-shrink:0; }
-  .guide-text{ font-size:11.5px; line-height:1.6; color:var(--body); }
+  .acc-title{ display:block; font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.02em; }
+  .acc-subtitle{ display:block; font-size:11.5px; color:var(--muted); margin-top:3px; letter-spacing:.01em; }
+  .vb-mark{ font-family:var(--serif); font-size:22px; color:var(--accent); line-height:1; transition:transform .28s ease; flex-shrink:0; }
+  .acc-item[open] .vb-mark{ transform:rotate(45deg); }
+  .acc-panel{ padding:0 2px 24px 56px; }
+  .concept-text{ font-size:12.5px; line-height:1.85; color:var(--body); margin-bottom:14px; text-wrap:pretty; }
+  .guide-steps{ display:flex; flex-direction:column; gap:9px; }
+  .guide-step{ display:flex; gap:11px; align-items:baseline; }
+  .guide-n{ font-family:var(--serif); font-style:italic; font-size:13px; color:var(--accent); width:16px; flex-shrink:0; }
+  .guide-text{ font-size:12px; line-height:1.6; color:var(--body); }
 
   /* COPYBOX */
-  .field-label{ font-size:10px; font-weight:700; letter-spacing:.08em; color:var(--accent); margin-bottom:8px; }
-  .copybox{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:15px 52px 15px 16px; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:12px; word-break:keep-all; line-height:1.6; }
-  .copybtn{ position:absolute; top:9px; right:9px; background:var(--accent); color:#fff; border:none; border-radius:20px; font-size:10px; font-weight:700; padding:7px 12px; font-family:inherit; cursor:pointer; }
-  .copybtn.done{ background:var(--accent-deep); }
-  .req-list{ list-style:none; display:flex; flex-direction:column; gap:9px; margin-top:4px; }
-  .req-list li{ font-size:12.5px; line-height:1.65; color:var(--body); padding-left:16px; position:relative; }
-  .req-list li::before{ content:''; position:absolute; left:0; top:6px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .field-label{ font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
+  .copybox{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:16px 56px 16px 18px; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:14px; word-break:keep-all; line-height:1.65; }
+  .copybtn{ position:absolute; top:10px; right:10px; background:var(--ink); color:#FCFAF4; border:none; border-radius:3px; font-size:10px; font-weight:700; letter-spacing:.04em; padding:8px 12px; font-family:inherit; cursor:pointer; transition:background .18s; }
+  .copybtn.done{ background:var(--accent); }
+  .req-list{ list-style:none; display:flex; flex-direction:column; gap:12px; margin-top:6px; }
+  .req-list li{ font-size:13px; line-height:1.7; color:var(--body); padding-left:18px; position:relative; text-wrap:pretty; }
+  .req-list li::before{ content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
   .req-list b{ color:var(--ink); font-weight:700; }
+  .req-list .em{ background:var(--tint); box-shadow:inset 0 -1px 0 var(--tint-deep); padding:1px 3px; border-radius:2px; color:var(--ink); font-weight:600; }
 
   /* DO & DONT */
-  .dd{ display:flex; flex-direction:column; gap:12px; }
-  .dd-col{ border-radius:18px; padding:20px; }
-  .dd-do{ background:#EFF6EE; }
-  .dd-dont{ background:#FBF1F0; }
-  .dd-head{ font-size:13px; font-weight:800; margin-bottom:13px; }
-  .dd-do .dd-head{ color:#3f6b39; }
-  .dd-dont .dd-head{ color:#9a3636; }
-  .dd-col ul{ list-style:none; display:flex; flex-direction:column; gap:9px; }
-  .dd-col li{ font-size:12px; line-height:1.6; padding-left:20px; position:relative; text-wrap:pretty; }
-  .dd-do li{ color:#4f5e4a; }
-  .dd-dont li{ color:#7a5050; }
-  .dd-do li::before{ content:'✓'; position:absolute; left:0; color:#3f6b39; font-weight:800; }
-  .dd-dont li::before{ content:'✕'; position:absolute; left:0; color:#9a3636; font-weight:800; }
-  .dd-col li b{ font-weight:700; }
-  .dd-do li b{ color:#2e4f2a; }
+  .dd{ display:flex; flex-direction:column; gap:14px; }
+  .dd-col{ border-radius:4px; padding:24px; border:1px solid var(--line); }
+  .dd-do{ background:var(--paper); }
+  .dd-dont{ background:var(--paper); }
+  .dd-head{ font-family:var(--serif); font-style:italic; font-size:20px; margin-bottom:16px; letter-spacing:.01em; }
+  .dd-do .dd-head{ color:#5C7A4E; }
+  .dd-dont .dd-head{ color:var(--accent); }
+  .dd-col ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+  .dd-col li{ font-size:12.5px; line-height:1.6; padding-left:22px; position:relative; color:var(--body); text-wrap:pretty; }
+  .dd-do li::before{ content:'✓'; position:absolute; left:0; color:#5C7A4E; font-weight:800; }
+  .dd-dont li::before{ content:'✕'; position:absolute; left:0; color:var(--accent); font-weight:800; }
+  .dd-col li b{ font-weight:700; color:var(--ink); }
 
   /* BENEFIT */
-  .ben{ display:flex; flex-direction:column; gap:12px; }
-  .ben-card{ background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px; }
-  .ben-t{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
-  .ben-t span.name{ font-size:14px; font-weight:800; color:var(--ink); }
-  .ben-t .pill{ font-size:9px; font-weight:700; border-radius:20px; padding:3px 9px; }
-  .pill.on{ color:#fff; background:var(--accent); }
-  .pill.wip{ color:#8E887F; background:#F0EDE7; }
-  .ben-d{ font-size:12px; line-height:1.7; color:var(--body); }
+  .ben{ display:flex; flex-direction:column; gap:14px; }
+  .ben-card{ background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:22px 24px; }
+  .ben-t{ display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+  .ben-t .name{ font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.01em; }
+  .ben-t .pill{ font-size:9.5px; font-weight:700; letter-spacing:.06em; border-radius:20px; padding:4px 10px; }
+  .pill.on{ color:#FCFAF4; background:var(--accent); }
+  .pill.wip{ color:var(--body); background:var(--tint-deep); }
+  .ben-d{ font-size:12.5px; line-height:1.75; color:var(--body); text-wrap:pretty; }
 
   /* FORM */
-  .apply{ background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:24px; }
-  .apply-intro{ font-size:12.5px; line-height:1.8; color:var(--body); margin-bottom:20px; }
+  .apply{ background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:28px 24px; }
+  .apply-intro{ font-size:13px; line-height:1.85; color:var(--body); margin-bottom:24px; text-wrap:pretty; }
   .apply-intro strong{ color:var(--ink); font-weight:700; }
-  .form{ display:flex; flex-direction:column; gap:14px; }
-  .field label{ display:block; font-size:11px; font-weight:700; color:#8E887F; margin-bottom:6px; }
+  .form{ display:flex; flex-direction:column; gap:18px; }
+  .field label{ display:block; font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--ink); margin-bottom:8px; }
   .field label .star{ color:var(--accent); }
-  .field input{ width:100%; font-family:inherit; font-size:13px; color:var(--ink); background:#F7F5F1; border:1px solid var(--line); border-radius:12px; padding:12px 14px; outline:none; transition:border-color .18s, background .18s; }
+  .field label .opt{ color:var(--faint); font-weight:500; }
+  .field input{ width:100%; font-family:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:13px 15px; outline:none; transition:border-color .18s, background .18s; }
   .field input:focus{ border-color:var(--accent); background:#fff; }
-  .field input::placeholder{ color:#C4BDB2; }
-  .consent{ display:flex; align-items:flex-start; gap:10px; background:var(--tint); border-radius:12px; padding:14px; cursor:pointer; }
-  .consent input{ width:18px; height:18px; border-radius:5px; flex-shrink:0; margin-top:1px; accent-color:var(--accent); cursor:pointer; }
-  .consent span{ font-size:11.5px; line-height:1.6; color:#5E6660; }
+  .field input::placeholder{ color:var(--faint); }
+  .prefs{ display:flex; flex-direction:column; gap:10px; }
+  .pref-row{ display:flex; align-items:center; gap:12px; }
+  .pref-rank{ font-family:var(--serif); font-style:italic; font-size:18px; color:var(--accent); width:30px; flex-shrink:0; text-align:center; }
+  .pref-row input{ flex:1; }
+  .consent{ display:flex; align-items:flex-start; gap:12px; background:var(--tint); border-radius:4px; padding:16px; cursor:pointer; }
+  .consent input{ width:18px; height:18px; flex-shrink:0; margin-top:1px; accent-color:var(--accent); cursor:pointer; }
+  .consent span{ font-size:11.5px; line-height:1.65; color:#6a6358; }
   .consent span b{ color:var(--ink); font-weight:700; }
-  .submit-btn{ background:var(--accent); color:#fff; border:none; border-radius:14px; padding:16px; font-size:14px; font-weight:800; font-family:inherit; cursor:pointer; transition:opacity .18s; }
-  .submit-btn:hover:not(:disabled){ opacity:.9; }
-  .submit-btn:disabled{ background:#C7CFC9; cursor:not-allowed; }
-  .legal{ font-size:10px; line-height:1.7; color:var(--faint); margin-top:16px; text-align:center; }
-  .form-done{ display:none; text-align:center; padding:24px 6px; }
-  .form-done .fd-check{ width:52px; height:52px; border-radius:50%; background:var(--accent); color:#fff; font-size:24px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
-  .form-done h3{ font-size:18px; font-weight:800; color:var(--ink); margin-bottom:10px; }
-  .form-done p{ font-size:13px; color:var(--body); line-height:1.8; }
-  .opt{ font-size:10px; font-weight:500; color:var(--muted); }
-  .dates{ display:flex; flex-direction:column; gap:8px; }
-  .date-row{ display:flex; align-items:center; gap:10px; }
-  .date-rank{ font-size:11px; font-weight:700; color:var(--accent); width:44px; flex-shrink:0; }
-  .dates input{ flex:1; min-width:0; }
+  .submit-btn{ background:var(--accent); color:#FCFAF4; border:none; border-radius:4px; padding:17px; font-size:14.5px; font-weight:800; letter-spacing:.02em; font-family:inherit; cursor:pointer; transition:background .18s, opacity .18s; }
+  .submit-btn:hover:not(:disabled){ background:var(--accent-deep); }
+  .submit-btn:disabled{ background:var(--tint-deep); color:var(--muted); cursor:not-allowed; }
+  .legal{ font-size:10.5px; line-height:1.75; color:var(--faint); margin-top:18px; text-align:center; text-wrap:pretty; }
+  .form-done{ display:none; text-align:center; padding:30px 8px; }
+  .form-done .fd-check{ font-family:var(--serif); font-style:italic; font-size:48px; color:var(--accent); margin-bottom:14px; line-height:1; }
+  .form-done h3{ font-size:21px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); margin-bottom:12px; }
+  .form-done p{ font-size:13px; color:var(--body); line-height:1.85; text-wrap:pretty; }
 
   /* FOOTER */
-  footer{ padding:20px 22px 26px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); }
-  .footer-copy{ font-size:9px; color:var(--faint); letter-spacing:.04em; }
-  .footer-link{ font-size:9px; font-weight:700; color:var(--accent); letter-spacing:.06em; text-decoration:none; }
+  footer{ padding:40px 24px 48px; border-top:1px solid var(--line); text-align:center; }
+  footer .fmark{ font-family:var(--serif); font-style:italic; font-size:28px; color:var(--ink); margin-bottom:18px; }
+  footer .fmark .amp{ color:var(--accent); }
+  footer .finfo{ font-size:11.5px; line-height:1.8; color:var(--muted); margin-bottom:16px; letter-spacing:.02em; }
+  footer .flink{ font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px; }
 
   /* STICKY CTA */
-  .cta-bar{ position:fixed; left:0; right:0; bottom:0; z-index:60; padding:12px 16px calc(12px + env(safe-area-inset-bottom)); background:rgba(46,50,47,.97); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transform:translateY(140%); transition:transform .32s cubic-bezier(.22,1,.36,1); }
+  .cta-bar{ position:fixed; left:0; right:0; bottom:0; z-index:60; padding:13px 18px calc(13px + env(safe-area-inset-bottom)); background:rgba(33,30,26,.97); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); transform:translateY(150%); transition:transform .34s cubic-bezier(.22,1,.36,1); }
   .cta-bar.show{ transform:translateY(0); }
-  .cta-bar .inner{ max-width:460px; margin:0 auto; display:flex; align-items:center; gap:14px; }
-  .cta-meta{ flex:1; min-width:0; color:#fff; }
-  .cta-meta b{ display:block; font-size:13px; font-weight:800; }
-  .cta-meta span{ font-size:10.5px; color:rgba(255,255,255,.7); }
-  .cta-bar button{ flex-shrink:0; background:var(--accent); color:#fff; border:none; padding:13px 22px; font-size:14px; font-weight:800; border-radius:12px; cursor:pointer; font-family:inherit; }
+  .cta-bar .inner{ max-width:480px; margin:0 auto; display:flex; align-items:center; gap:14px; }
+  .cta-meta{ flex:1; min-width:0; color:#FCFAF4; }
+  .cta-meta b{ display:block; font-size:13.5px; font-weight:800; letter-spacing:-0.01em; }
+  .cta-meta span{ font-size:10.5px; color:rgba(252,250,244,.62); letter-spacing:.02em; }
+  .cta-bar button{ flex-shrink:0; background:var(--accent); color:#FCFAF4; border:none; padding:14px 24px; font-size:14px; font-weight:800; border-radius:4px; cursor:pointer; font-family:inherit; }
 
-  @keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
-  .reveal{ opacity:0; animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards; }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
+
+  /* FONT TWEAK PANEL */
+  .fontfab{ position:fixed; left:18px; bottom:18px; z-index:80; width:48px; height:48px; border-radius:50%; border:1px solid var(--line); background:var(--paper); box-shadow:0 6px 24px rgba(33,30,26,.18); cursor:pointer; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:22px; color:var(--ink); padding-bottom:3px; transition:transform .2s; }
+  .fontfab:hover{ transform:scale(1.06); }
+  .fontpanel{ position:fixed; left:18px; bottom:74px; z-index:81; width:248px; background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:0 14px 44px rgba(33,30,26,.22); padding:16px; transform-origin:bottom left; transform:scale(.9); opacity:0; pointer-events:none; transition:transform .2s cubic-bezier(.22,1,.36,1), opacity .2s; }
+  .fontpanel.open{ transform:scale(1); opacity:1; pointer-events:auto; }
+  .fontpanel .ph-t{ font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .fontpanel .ph-s{ font-size:12px; color:var(--body); margin-bottom:14px; line-height:1.5; }
+  .fontpanel .opts{ display:flex; flex-direction:column; gap:8px; }
+  .fontopt{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 13px; border:1px solid var(--line); border-radius:7px; background:var(--bg); cursor:pointer; transition:border-color .15s, background .15s; text-align:left; width:100%; font-family:inherit; }
+  .fontopt:hover{ border-color:var(--faint); }
+  .fontopt.sel{ border-color:var(--accent); background:var(--tint); }
+  .fontopt .prev{ font-size:19px; color:var(--ink); line-height:1; }
+  .fontopt .lab{ font-size:10.5px; color:var(--muted); letter-spacing:.02em; flex-shrink:0; }
+  .fontopt.sel .lab{ color:var(--accent); }
+
+  .reveal{ opacity:0; animation:fadeUp .8s cubic-bezier(.22,1,.36,1) forwards; }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{ animation:none!important; transition:none!important; scroll-behavior:auto!important; }
     .reveal{ opacity:1!important; transform:none!important; }
@@ -216,39 +252,48 @@
 
   <nav>
     <span class="nav-logo">SIRIAI</span>
-    <span class="nav-label">Reels Guide 2026</span>
+    <span class="nav-label">Reels Guide</span>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <span class="hero-eyebrow reveal">ID SKIN CLINIC × SIRIAI</span>
-    <h1 class="reveal">ID 피부과<span class="dot">.</span></h1>
-    <div class="hero-sub reveal">× SIRIAI</div>
-    <p class="hero-desc reveal">ID 피부과 캠페인 <strong>공식 릴스 가이드</strong><br>휴니드 스킨부스터를 직접 경험하고, 릴스를 만들어 주세요.</p>
-  </section>
+  <!-- HERO — full-bleed image with overlay -->
+  <header class="hero-full">
+    <img class="bg" src="배너2.png" alt="ID 피부과 휴니드 스킨부스터">
+    <div class="tint"></div>
+    <div class="wm">id.</div>
+    <div class="ov">
+      <div class="kick">
+        <span class="eyebrow">ID Skin Clinic × SIRIAI</span>
+        <span class="line"></span>
+        <span class="eyebrow yr">2026</span>
+      </div>
+      <div class="kr-title">ID 피부과 <b>휴니드 스킨부스터</b> 릴스 캠페인</div>
+    </div>
+  </header>
 
-  <img class="banner reveal" src="배너.png" alt="ID 피부과 휴니드 스킨부스터 배너">
+  <div class="lede-wrap">
+    <p class="lede">휴니드 스킨부스터를 직접 경험하고, 당신의 무드로 릴스를 만들어 주세요. 이 페이지는 캠페인 <strong>공식 가이드</strong>입니다.</p>
+  </div>
 
   <!-- META -->
-  <div class="meta-grid reveal">
-    <div class="meta-cell"><div class="meta-label">Format</div><div class="meta-value">인스타 릴스<small>30초 이상</small></div></div>
-    <div class="meta-cell"><div class="meta-label">고료</div><div class="meta-value">시술 제공형<small>고료 없음</small></div></div>
-    <div class="meta-cell"><div class="meta-label">제공 시술</div><div class="meta-value">휴니드<small>50만원 상당</small></div></div>
-    <div class="meta-cell"><div class="meta-label">업로드</div><div class="meta-value">시술 후 10일<small>이내 업로드</small></div></div>
+  <div class="meta">
+    <div class="meta-cell"><span class="ic">🎬</span><div class="k">Format</div><div class="v">인스타 릴스<small>30초 이상</small></div></div>
+    <div class="meta-cell"><span class="ic">💸</span><div class="k">고료</div><div class="v">시술 제공형<small>고료 없음</small></div></div>
+    <div class="meta-cell"><span class="ic">✨</span><div class="k">제공 시술</div><div class="v">휴니드<small>50만원 상당</small></div></div>
+    <div class="meta-cell"><span class="ic">🗓️</span><div class="k">업로드</div><div class="v">시술 후 10일<small>이내 업로드</small></div></div>
   </div>
 
   <!-- SUMMARY -->
-  <div class="summary reveal">
-    <div class="sum-card get">
-      <div class="sum-eyebrow"><span class="mk">+</span>받는 혜택</div>
+  <div class="summary">
+    <div class="sum get">
+      <div class="sum-h"><span class="mk">+</span><b>받는 혜택</b><span class="en">You get</span></div>
       <ul>
         <li><b>휴니드 스킨부스터</b> 시술 (50만원 상당 · 수면 포함)</li>
         <li>이벤트 진행코드 제공 가능</li>
         <li>보톡스 추가 제공 협의 가능</li>
       </ul>
     </div>
-    <div class="sum-card todo">
-      <div class="sum-eyebrow"><span class="mk">!</span>내가 할 일</div>
+    <div class="sum todo">
+      <div class="sum-h"><span class="mk">→</span><b>내가 할 일</b><span class="en">You do</span></div>
       <ul>
         <li>인스타 <b>릴스 1편 (30초 이상)</b> 제작</li>
         <li>시술 후 <b>10일 이내</b> 업로드</li>
@@ -259,42 +304,40 @@
   </div>
 
   <!-- 01 방향 -->
-  <section class="block">
-    <div class="block-head"><span class="block-num">01</span><span class="block-title">이번 캠페인의 방향</span></div>
-    <div class="callout">
-      <span class="quote">"아, 저 사람이 하는 거<br>나도 해보고 싶은데?"</span>
-      <p>단순히 병원을 찍고 시술을 받는 후기 콘텐츠가 아닙니다.<br>영상을 본 사람이 자연스럽게 <span class="hl">"나도 해보고 싶다"</span>고 느껴지게 해주세요.<br><br>너무 인위적인 광고 톤은 지양해 주세요.<br>본인의 <strong>일상 · 자기관리 무드</strong> 안에 시술이 자연스럽게 녹아드는 방향이 가장 좋습니다.</p>
-    </div>
+  <section class="block callout">
+    <div class="sec-head"><div class="top"><span class="no">01</span><span class="label">The Direction</span></div><h2>이번 캠페인의 방향</h2></div>
+    <p class="quote">"아, <span class="mark">저 사람</span>이 하는 거<br>나도 해보고 싶은데?"</p>
+    <p>단순히 병원을 찍고 시술을 받는 후기 콘텐츠가 아닙니다. 영상을 본 사람이 자연스럽게 <span class="hl">"나도 해보고 싶다"</span>고 느껴지게 해주세요.</p>
+    <div class="rule"></div>
+    <p>너무 인위적인 광고 톤은 지양해 주세요. 본인의 <strong>일상 · 자기관리 무드</strong> 안에 시술이 자연스럽게 녹아드는 방향이 가장 좋습니다.</p>
   </section>
 
   <!-- 02 제공 시술 -->
   <section class="block">
-    <div class="block-head"><span class="block-num">02</span><span class="block-title">제공 시술</span></div>
+    <div class="sec-head"><div class="top"><span class="no">02</span><span class="label">The Treatment</span></div><h2>제공 시술</h2></div>
     <div class="offer">
-      <div class="offer-name"><small>제공 항목</small><b>휴니드 스킨부스터</b></div>
-      <div class="offer-price"><span class="pp">50만원</span><span class="ps">수면 포함</span></div>
+      <div class="nm"><small>제공 항목</small><b>휴니드 스킨부스터</b></div>
+      <div class="pr"><span class="pp">50만</span><span class="ps">수면 포함</span></div>
     </div>
-    <div class="proc">
-      <div class="proc-cell"><span class="proc-n">01</span><div><div class="proc-t">내방</div><div class="proc-d">협의된 예약 일정에 맞춰 ID 피부과 방문</div></div></div>
-      <div class="proc-cell"><span class="proc-n">02</span><div><div class="proc-t">피부 상담</div><div class="proc-d">id SRS-ai 시스템으로 피부 측정 후 맞춤 상담</div></div></div>
-      <div class="proc-cell"><span class="proc-n">03</span><div><div class="proc-t">시술</div><div class="proc-d">수면마취(NPid)로 편안하게 휴니드 시술</div></div></div>
+    <div class="steps">
+      <div class="step"><span class="sn">01</span><div><div class="st">내방</div><div class="sd">협의된 예약 일정에 맞춰 ID 피부과 방문</div></div></div>
+      <div class="step"><span class="sn">02</span><div><div class="st">피부 상담</div><div class="sd">id SRS-ai 시스템으로 피부 측정 후 맞춤 상담</div></div></div>
+      <div class="step"><span class="sn">03</span><div><div class="st">시술</div><div class="sd">수면마취(NPid)로 편안하게 휴니드 시술</div></div></div>
     </div>
   </section>
 
   <!-- 03 차별점 -->
   <section class="block">
-    <div class="block-head"><span class="block-num">03</span><span class="block-title">ID만의 차별점</span></div>
-    <p class="diff-lead">메디컬 뷰티 노하우를 담아 아이디에서 새롭게 출시한 <b>차세대 콜라겐 스킨부스터</b>입니다.</p>
-    <p class="block-desc">릴스에 녹여주면 좋은 두 포인트입니다.</p>
+    <div class="sec-head"><div class="top"><span class="no">03</span><span class="label">Why ID</span></div><h2>ID만의 차별점</h2><p class="sub">메디컬 뷰티 노하우를 담아 아이디에서 새롭게 출시한 <strong style="color:var(--ink);font-weight:700">차세대 콜라겐 스킨부스터</strong>입니다. 릴스에 녹여주면 좋은 두 포인트예요.</p></div>
     <div class="diff">
       <div class="diff-card">
-        <span class="diff-tag">POINT 01</span>
+        <span class="diff-tag">Point 01</span>
         <div class="diff-h"><span class="dot">안 아픈</span> 스킨부스터</div>
         <p class="diff-p">"안 아픈 스킨부스터"는 ID만의 타이틀. <b>NPid 수면마취</b>로 통증 걱정 없이 시술받을 수 있어 "아파서 미뤘던" 분들이 공감할 포인트예요.</p>
         <a class="diff-link" href="https://www.junggi.co.kr/news/articleView.html?idxno=36763" target="_blank" rel="noopener">관련 보도 보기 ↗</a>
       </div>
       <div class="diff-card">
-        <span class="diff-tag">POINT 02</span>
+        <span class="diff-tag">Point 02</span>
         <div class="diff-h">id <span class="dot">SRS-ai</span> 피부측정</div>
         <p class="diff-p">기존 마크뷰 3D가 아닌 자체 <b>AI 시스템(id SRS-ai)</b>으로 정밀 측정. 데이터 기반 맞춤 진단의 전문성을 자연스럽게 보여줄 수 있습니다.</p>
         <a class="diff-link" href="https://www.junggi.co.kr/news/articleView.html?idxno=36868" target="_blank" rel="noopener">관련 보도 보기 ↗</a>
@@ -304,8 +347,7 @@
 
   <!-- 04 콘텐츠 컨셉 -->
   <section class="block">
-    <div class="block-head"><span class="block-num">04</span><span class="block-title">콘텐츠 컨셉</span></div>
-    <p class="block-desc">아래 컨셉은 <strong>참고용 제안</strong>입니다. 꼭 이 중에서 고르지 않아도 되며, 캠페인 방향에 맞는다면 <strong>본인 스타일대로 자유롭게 제작</strong>하셔도 좋습니다.</p>
+    <div class="sec-head"><div class="top"><span class="no">04</span><span class="label">Content Ideas</span></div><h2>콘텐츠 컨셉</h2><p class="sub">아래 컨셉은 <strong style="color:var(--ink);font-weight:700">참고용 제안</strong>입니다. 꼭 이 중에서 고르지 않아도 되며, 방향에 맞는다면 본인 스타일대로 자유롭게 제작하셔도 좋습니다.</p></div>
     <div class="accordion">
       <details class="acc-item" open>
         <summary class="acc-header"><span class="acc-num">01</span><span class="acc-titles"><span class="acc-title">요즘 나 피부 왜 이래?</span><span class="acc-subtitle">시술 전후 변화 기록형</span></span><span class="vb-mark">+</span></summary>
@@ -356,13 +398,12 @@
 
   <!-- 05 필수 항목 -->
   <section class="block">
-    <div class="block-head"><span class="block-num">05</span><span class="block-title">필수 항목</span></div>
-    <p class="block-desc">아래 항목은 포함해 주세요.</p>
+    <div class="sec-head"><div class="top"><span class="no">05</span><span class="label">Must-Haves</span></div><h2>필수 항목</h2><p class="sub">아래 항목은 꼭 포함해 주세요.</p></div>
     <div class="field-label">필수 해시태그 · 계정 멘션</div>
-    <div class="copybox" style="padding:15px 16px;color:var(--muted);font-weight:600">추후 협의 후 안내드립니다.</div>
+    <div class="copybox" style="padding:16px 18px;color:var(--muted);font-weight:600">추후 협의 후 안내드립니다.</div>
     <ul class="req-list">
       <li><b>릴스 30초 이상</b>으로 제작 (인스타그램 릴스).</li>
-      <li>영상 혹은 캡션 마지막에 <b>"병원 정보나 가격이 궁금하시면 댓글 달아주세요! DM으로 바로 알려드릴게요"</b>와 같이 소비자의 반응(댓글/DM)을 유도하는 멘트를 <b>꼭 포함</b>해 주세요.</li>
+      <li>영상 혹은 캡션 마지막에 <span class="em">"병원 정보나 가격이 궁금하시면 댓글 달아주세요! DM으로 바로 알려드릴게요"</span>와 같이 댓글·DM 반응을 유도하는 멘트를 <b>꼭 포함</b>해 주세요.</li>
       <li><b>2차 활용 동의</b> 필수 — 제작물은 브랜드 광고·공식 채널에 재사용될 수 있습니다.</li>
       <li>업로드 후 <b>최소 3개월</b> 게시물을 유지해 주세요.</li>
       <li>시술 후 <b>10일 이내</b> 업로드 (촬영·방문 일정은 개별 협의).</li>
@@ -371,10 +412,10 @@
 
   <!-- 06 DO & DON'T -->
   <section class="block">
-    <div class="block-head"><span class="block-num">06</span><span class="block-title">DO &amp; DON'T</span></div>
+    <div class="sec-head"><div class="top"><span class="no">06</span><span class="label">Guidelines</span></div><h2>DO &amp; DON'T</h2></div>
     <div class="dd">
       <div class="dd-col dd-do">
-        <div class="dd-head">DO — 이렇게 해주세요</div>
+        <div class="dd-head">Do</div>
         <ul>
           <li>일상·자기관리 무드 안에 시술을 자연스럽게 녹이기</li>
           <li>수면마취·AI 피부측정 등 차별점을 '경험담'으로 전달</li>
@@ -384,7 +425,7 @@
         </ul>
       </div>
       <div class="dd-col dd-dont">
-        <div class="dd-head">DON'T — 이건 피해주세요</div>
+        <div class="dd-head">Don't</div>
         <ul>
           <li>과장·인위적인 광고 멘트 ("인생 시술!! 무조건 가세요!!" 류)</li>
           <li>효과 단정·보장 표현 (의료광고 규정 위반 소지)</li>
@@ -399,8 +440,7 @@
 
   <!-- 07 추가 혜택 -->
   <section class="block">
-    <div class="block-head"><span class="block-num">07</span><span class="block-title">추가 혜택 안내</span></div>
-    <p class="block-desc">아래 혜택은 인플루언서별로 협의 후 확정됩니다.</p>
+    <div class="sec-head"><div class="top"><span class="no">07</span><span class="label">Extra Perks</span></div><h2>추가 혜택 안내</h2><p class="sub">아래 혜택은 인플루언서별로 협의 후 확정됩니다.</p></div>
     <div class="ben">
       <div class="ben-card"><div class="ben-t"><span class="name">이벤트 진행코드</span><span class="pill on">제공 가능</span></div><div class="ben-d">팔로워에게 안내할 수 있는 이벤트 진행코드 제공이 가능합니다.</div></div>
       <div class="ben-card"><div class="ben-t"><span class="name">보톡스 추가 제공</span><span class="pill wip">협의 중</span></div><div class="ben-d">보톡스 추가 제공 부분은 현재 논의 중이며, 가능할 것으로 예상됩니다.</div></div>
@@ -409,7 +449,7 @@
 
   <!-- 08 신청 -->
   <section class="block" id="apply">
-    <div class="block-head"><span class="block-num">08</span><span class="block-title">캠페인 신청하기</span></div>
+    <div class="sec-head"><div class="top"><span class="no">08</span><span class="label">Apply</span></div><h2>캠페인 신청하기</h2></div>
     <div class="apply">
       <div id="formWrap">
         <p class="apply-intro">마감 없이 <strong>상시 모집</strong>되며, 촬영·방문 일정은 선정 후 1:1로 협의합니다. 2차 활용 동의 후 제출이 가능하고, 선정 결과는 개별 안내드립니다.</p>
@@ -417,13 +457,13 @@
           <div class="field"><label>이름 <span class="star">*</span></label><input type="text" name="name" required autocomplete="name" placeholder="홍길동"></div>
           <div class="field"><label>인스타그램 링크 <span class="star">*</span></label><input type="text" name="instagram" required placeholder="https://instagram.com/your_id"></div>
           <div class="field"><label>휴대폰 번호 <span class="star">*</span></label><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" maxlength="13" oninput="fmtPhone(this)" placeholder="010-1234-5678"></div>
-          <div class="field"><label>이메일 <span style="color:var(--faint);font-weight:500">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
+          <div class="field"><label>이메일 <span class="opt">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
           <div class="field">
-            <label>방문 희망일 <span class="star">*</span> <span class="opt">(가능한 날짜를 순서대로, 최대 3개)</span></label>
-            <div class="dates">
-              <div class="date-row"><span class="date-rank">1순위</span><input type="date" name="d1" required></div>
-              <div class="date-row"><span class="date-rank">2순위</span><input type="date" name="d2"></div>
-              <div class="date-row"><span class="date-rank">3순위</span><input type="date" name="d3"></div>
+            <label>방문 희망일 <span class="star">*</span> <span class="opt">가능한 날짜를 순서대로, 최대 3개</span></label>
+            <div class="prefs">
+              <div class="pref-row"><span class="pref-rank">1st</span><input type="text" name="date1" required placeholder="1순위 — 예: 2/14(금) 오후"></div>
+              <div class="pref-row"><span class="pref-rank">2nd</span><input type="text" name="date2" placeholder="2순위 (선택)"></div>
+              <div class="pref-row"><span class="pref-rank">3rd</span><input type="text" name="date3" placeholder="3순위 (선택)"></div>
             </div>
           </div>
           <label class="consent" for="consent">
@@ -439,25 +479,34 @@
         <p>소중한 신청 감사합니다.<br>선정 시 개별적으로 안내드릴 예정입니다.</p>
       </div>
     </div>
-    <p class="legal">※ 제출하신 개인정보(이름·연락처·인스타그램·이메일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
+    <p class="legal">※ 제출하신 개인정보(이름·연락처·인스타그램·이메일·방문희망일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
   </section>
 
   <footer>
-    <span class="footer-copy">ID 피부과 × SIRIAI · 2026 Campaign</span>
-    <a href="https://featpaper.com/v/7jqtPGf2" target="_blank" rel="noopener" class="footer-link">SIRIAI Portfolio ↗</a>
+    <div class="fmark">ID 피부과 <span class="amp">×</span> SIRIAI</div>
+    <div class="finfo">2026 Reels Campaign · 휴니드 스킨부스터 릴스 협업<br>본 페이지는 SIRIAI가 운영합니다.</div>
+    <a href="https://featpaper.com/v/7jqtPGf2" target="_blank" rel="noopener" class="flink">SIRIAI Portfolio ↗</a>
   </footer>
 
 </div>
 
+<!-- FONT TWEAK -->
+<button class="fontfab" id="fontFab" type="button" aria-label="글씨체 바꾸기" onclick="toggleFontPanel()">Aa</button>
+<div class="fontpanel" id="fontPanel">
+  <div class="ph-t">글씨체 · Quote Font</div>
+  <div class="ph-s">"이번 캠페인의 방향" 문구의 글씨체를 골라보세요.</div>
+  <div class="opts" id="fontOpts"></div>
+</div>
+
 <div class="cta-bar" id="ctaBar">
   <div class="inner">
-    <div class="cta-meta"><b>휴니드 스킨부스터 릴스 협업</b></div>
+    <div class="cta-meta"><b>휴니드 스킨부스터 릴스 협업</b><span>고료 없음 · 시술 제공형 · 상시 모집</span></div>
     <button type="button" onclick="goApply()">신청하기 →</button>
   </div>
 </div>
 
 <script>
-/* ===== 구글시트 연동 — 아래 URL만 본인 것으로 교체하세요 ===== */
+/* ===== 구글시트 연동 — 아래 URL만 본인 Apps Script 주소로 교체하세요 ===== */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyGNC6Q7DYJEl18CewNOi_IOjE0BdAhcBgsz2fkafsRf2tFZtt3qG37msr7McdfSpS8/exec';
 
 function cp(btn, box){
@@ -475,35 +524,62 @@ function fmtPhone(el){
   else if(v.length < 8){ el.value = v.slice(0,3)+'-'+v.slice(3); }
   else { el.value = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
 }
-
-/* 방문 희망일: 오늘 이전 날짜 선택 방지 */
-(function(){
-  var t = new Date();
-  var iso = t.getFullYear() + '-' + ('0'+(t.getMonth()+1)).slice(-2) + '-' + ('0'+t.getDate()).slice(-2);
-  document.querySelectorAll('.dates input[type=date]').forEach(function(i){ i.min = iso; });
-})();
 (function(){
   var bar = document.getElementById('ctaBar');
   var apply = document.getElementById('apply');
   var applyVisible = false;
-  function upd(){ bar.classList.toggle('show', window.scrollY > 460 && !applyVisible && !window.__submitted); }
+  function upd(){ bar.classList.toggle('show', window.scrollY > 520 && !applyVisible && !window.__submitted); }
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ es.forEach(function(e){ applyVisible = e.isIntersecting; }); upd(); }, { threshold:0.01 }).observe(apply);
   }
   window.addEventListener('scroll', upd, { passive:true });
   window.addEventListener('resize', upd); upd();
 })();
+/* ===== 글씨체 트윅 ===== */
+var QUOTE_FONTS = [
+  { id:'hahmlet', label:'모던 명조', font:"'Hahmlet',serif", weight:600, mark:'normal' },
+  { id:'songmyung', label:'가는 명조', font:"'Song Myung',serif", weight:400, mark:'normal' },
+  { id:'nanum', label:'클래식 명조', font:"'Nanum Myeongjo',serif", weight:800, mark:'normal' },
+  { id:'gowun', label:'고운 바탕', font:"'Gowun Batang',serif", weight:700, mark:'normal' },
+  { id:'pretendard', label:'산세리프', font:"var(--sans)", weight:800, mark:'normal' },
+  { id:'gaegu', label:'손글씨', font:"'Gaegu',cursive", weight:700, mark:'normal' }
+];
+function applyQuoteFont(id){
+  var f = QUOTE_FONTS.find(function(x){ return x.id===id; }) || QUOTE_FONTS[0];
+  var r = document.documentElement.style;
+  r.setProperty('--quote-font', f.font);
+  r.setProperty('--quote-weight', f.weight);
+  r.setProperty('--quote-mark-style', f.mark);
+  try{ localStorage.setItem('idg_quote_font', f.id); }catch(e){}
+  document.querySelectorAll('.fontopt').forEach(function(b){ b.classList.toggle('sel', b.dataset.id===f.id); });
+}
+function toggleFontPanel(){ document.getElementById('fontPanel').classList.toggle('open'); }
+(function(){
+  var saved; try{ saved = localStorage.getItem('idg_quote_font'); }catch(e){}
+  var cur = (saved && QUOTE_FONTS.some(function(x){return x.id===saved;})) ? saved : 'hahmlet';
+  var wrap = document.getElementById('fontOpts');
+  QUOTE_FONTS.forEach(function(f){
+    var b = document.createElement('button');
+    b.type='button'; b.className='fontopt'; b.dataset.id=f.id;
+    b.onclick = function(){ applyQuoteFont(f.id); };
+    b.innerHTML = '<span class="prev" style="font-family:'+f.font+';font-weight:'+f.weight+'">저 사람이</span><span class="lab">'+f.label+'</span>';
+    wrap.appendChild(b);
+  });
+  applyQuoteFont(cur);
+  document.addEventListener('click', function(e){
+    var p = document.getElementById('fontPanel'), fab = document.getElementById('fontFab');
+    if(p.classList.contains('open') && !p.contains(e.target) && !fab.contains(e.target)) p.classList.remove('open');
+  });
+})();
+
 async function submitForm(ev){
   ev.preventDefault();
-  var form = ev.target;
-  var f = form.elements;
+  var f = ev.target.elements;
   if(!f['consent'].checked) return;
-  var dates = ['d1','d2','d3'].map(function(n){ return f[n] && f[n].value ? f[n].value : ''; }).filter(Boolean);
-  if(dates.length === 0){ alert('방문 희망일을 한 개 이상 선택해 주세요.'); return; }
+  var dates = [f['date1'].value.trim(), f['date2'].value.trim(), f['date3'].value.trim()].filter(Boolean);
   var payload = {
-    name:f['name'].value.trim(), instagram:f['instagram'].value.trim(),
-    phone:f['phone'].value.trim(), email:f['email'].value.trim(),
-    visit:dates.join(', '), consent:f['consent'].checked
+    name:f['name'].value.trim(), instagram:f['instagram'].value.trim(), phone:f['phone'].value.trim(),
+    email:f['email'].value.trim(), visit:dates.join(' / '), consent:f['consent'].checked
   };
   var btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.textContent = '제출 중...';
