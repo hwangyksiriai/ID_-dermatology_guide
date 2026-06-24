@@ -534,10 +534,11 @@ async function submitForm(ev){
   ev.preventDefault();
   var f = ev.target.elements;
   if(!f['consent'].checked) return;
-  var dates = [f['date1'].value.trim(), f['date2'].value.trim(), f['date3'].value.trim()].filter(Boolean);
   var payload = {
     name:f['name'].value.trim(), instagram:f['instagram'].value.trim(), phone:f['phone'].value.trim(),
-    email:f['email'].value.trim(), visit:dates.join(' / '), consent:f['consent'].checked
+    email:f['email'].value.trim(),
+    date1:f['date1'].value.trim(), date2:f['date2'].value.trim(), date3:f['date3'].value.trim(),
+    consent:f['consent'].checked
   };
   var btn = document.getElementById('submitBtn');
   btn.disabled = true; btn.textContent = '제출 중...';
