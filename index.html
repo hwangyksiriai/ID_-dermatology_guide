@@ -133,6 +133,15 @@
   .diff-link{ display:inline-flex; align-items:center; gap:5px; margin-top:15px; font-size:11px; font-weight:700; letter-spacing:.03em; color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px; }
   .diff-link:hover{ opacity:.65; }
 
+  /* COMMON REFERENCE */
+  .ref-link{ display:flex; align-items:center; gap:14px; background:var(--tint); border:1px solid var(--line); border-radius:4px; padding:15px 18px; margin-bottom:18px; text-decoration:none; transition:background .18s; }
+  .ref-link:hover{ background:var(--tint-deep); }
+  .ref-link .ref-ic{ width:34px; height:34px; border-radius:50%; background:var(--accent); color:#FCFAF4; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+  .ref-link .ref-txt{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+  .ref-link .ref-txt b{ font-size:13.5px; font-weight:800; color:var(--ink); }
+  .ref-link .ref-txt span{ font-size:11.5px; color:var(--body); }
+  .ref-link .ref-arrow{ font-size:16px; color:var(--accent); flex-shrink:0; }
+
   /* ACCORDION */
   .accordion{ border-top:1px solid var(--line); }
   .acc-item{ border-bottom:1px solid var(--line); }
@@ -350,6 +359,11 @@
   <!-- 04 콘텐츠 컨셉 -->
   <section class="block">
     <div class="sec-head"><div class="top"><span class="no">04</span><span class="label">Content Ideas</span></div><h2>콘텐츠 컨셉</h2><p class="sub">아래 컨셉은 <strong style="color:var(--ink);font-weight:700">참고용 제안</strong>입니다. 꼭 이 중에서 고르지 않아도 되며, 방향에 맞는다면 본인 스타일대로 자유롭게 제작하셔도 좋습니다.</p></div>
+    <a class="ref-link" href="https://www.instagram.com/reels/DZr2oSLzKJk/" target="_blank" rel="noopener">
+      <span class="ref-ic">▶</span>
+      <span class="ref-txt"><b>공통 레퍼런스</b><span>이런 무드로 제작해 주세요 · 인스타 릴스 보기</span></span>
+      <span class="ref-arrow">↗</span>
+    </a>
     <div class="accordion">
       <details class="acc-item" open>
         <summary class="acc-header"><span class="acc-num">01</span><span class="acc-titles"><span class="acc-title">요즘 나 피부 왜 이래?</span><span class="acc-subtitle">시술 전후 변화 기록형</span></span><span class="vb-mark">+</span></summary>
