@@ -207,6 +207,7 @@
   .field input{ width:100%; font-family:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:13px 15px; outline:none; transition:border-color .18s, background .18s; }
   .field input:focus{ border-color:var(--accent); background:#fff; }
   .field input::placeholder{ color:var(--faint); }
+  .date-notice{ display:flex; align-items:center; gap:8px; background:var(--tint); border:1px solid var(--accent); border-radius:4px; padding:11px 14px; margin-bottom:12px; font-size:11.5px; font-weight:700; color:var(--accent-deep); line-height:1.6; }
   .prefs{ display:flex; flex-direction:column; gap:10px; }
   .pref-row{ display:flex; align-items:center; gap:12px; }
   .pref-rank{ font-family:var(--futura); font-weight:600; font-size:14px; letter-spacing:.02em; color:var(--accent); width:40px; flex-shrink:0; text-align:center; white-space:nowrap; }
@@ -477,10 +478,11 @@
           <div class="field"><label>이메일 <span class="opt">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
           <div class="field">
             <label>방문 희망일 <span class="star">*</span> <span class="opt">가능한 날짜를 순서대로, 최대 3개</span></label>
+            <div class="date-notice">⚠ 시술은 수요일·목요일에만 가능합니다. 수/목 중 가능한 날짜만 적어주세요.</div>
             <div class="prefs">
-              <div class="pref-row"><span class="pref-rank">1st</span><input type="text" name="date1" required placeholder="1순위 — 예: 2/14(금) 오후"></div>
-              <div class="pref-row"><span class="pref-rank">2nd</span><input type="text" name="date2" placeholder="2순위 (선택)"></div>
-              <div class="pref-row"><span class="pref-rank">3rd</span><input type="text" name="date3" placeholder="3순위 (선택)"></div>
+              <div class="pref-row"><span class="pref-rank">1st</span><input type="text" name="date1" required placeholder="1순위 — 예: 2/18(수) 오후"></div>
+              <div class="pref-row"><span class="pref-rank">2nd</span><input type="text" name="date2" placeholder="2순위 — 예: 2/19(목) 오후 (선택)"></div>
+              <div class="pref-row"><span class="pref-rank">3rd</span><input type="text" name="date3" placeholder="3순위 — 예: 2/25(수) 오후 (선택)"></div>
             </div>
           </div>
           <label class="consent" for="consent">
