@@ -10,7 +10,7 @@
  */
 
 var SHEET_NAME = '신청';
-var HEADERS = ['신청일시', '이름', '인스타그램', '휴대폰', '이메일', '방문희망일1', '방문희망일2', '방문희망일3', '2차활용동의'];
+var HEADERS = ['신청일시', '이름', '인스타그램', '휴대폰', '이메일', '방문희망일1', '방문희망일2', '방문희망일3', '2차활용동의', '지원시술'];
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -42,7 +42,8 @@ function doPost(e) {
       d.date1 || '',
       d.date2 || '',
       d.date3 || '',
-      d.consent ? '동의' : '미동의'
+      d.consent ? '동의' : '미동의',
+      d.product || ''
     ]);
 
     return ContentService

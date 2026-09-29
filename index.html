@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ID 피부과 × SIRIAI — 인플루언서 릴스 가이드 2026</title>
-<meta name="description" content="ID 피부과 휴니드 스킨부스터 릴스 캠페인 가이드. 시술 제공형, 상시 모집.">
+<meta name="description" content="ID 피부과 휴니드 스킨부스터 · 페이스코드 릴스 캠페인 가이드. 두 시술 중 택1, 시술 제공형, 상시 모집.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -116,6 +116,10 @@
   .offer .pr{ text-align:right; flex-shrink:0; }
   .offer .pr .pp{ font-family:var(--serif); font-style:normal; font-size:34px; color:var(--tint-deep); line-height:.9; }
   .offer .pr .ps{ display:block; font-size:10.5px; color:rgba(255,255,255,.55); margin-top:5px; letter-spacing:.04em; }
+  .offer-opt{ display:flex; align-items:center; gap:10px; margin-bottom:12px; font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .offer-opt::after{ content:''; flex:1; height:1px; background:var(--line); }
+  .offer-desc{ font-size:13px; line-height:1.8; color:var(--body); margin-bottom:8px; text-wrap:pretty; }
+  .steps + .offer-opt{ margin-top:36px; }
   .steps{ display:flex; flex-direction:column; }
   .step{ display:flex; gap:18px; align-items:flex-start; padding:18px 2px; border-bottom:1px solid var(--line); }
   .step:last-child{ border-bottom:none; }
@@ -196,6 +200,15 @@
   .field input{ width:100%; font-family:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:13px 15px; outline:none; transition:border-color .18s, background .18s; }
   .field input:focus{ border-color:var(--accent); background:#fff; }
   .field input::placeholder{ color:var(--faint); }
+  .choices{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .choice{ position:relative; display:block; cursor:pointer; }
+  .choice input{ position:absolute; opacity:0; pointer-events:none; }
+  .choice .cbox{ display:flex; flex-direction:column; gap:4px; height:100%; background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:14px 15px; transition:border-color .18s, background .18s; }
+  .choice .cbox b{ font-size:14px; font-weight:800; color:var(--ink); letter-spacing:-0.01em; }
+  .choice .cbox small{ font-size:11px; color:var(--muted); }
+  .choice input:checked + .cbox{ border-color:var(--accent); background:var(--tint); box-shadow:inset 0 0 0 1px var(--accent); }
+  .choice input:checked + .cbox small{ color:var(--accent-deep); }
+  .choice input:focus-visible + .cbox{ outline:2px solid var(--accent); outline-offset:2px; }
   .date-notice{ display:flex; align-items:center; gap:8px; background:var(--tint); border:1px solid var(--accent); border-radius:4px; padding:11px 14px; margin-bottom:12px; font-size:11.5px; font-weight:700; color:var(--accent-deep); line-height:1.6; }
   .prefs{ display:flex; flex-direction:column; gap:10px; }
   .pref-row{ display:flex; align-items:center; gap:12px; }
@@ -263,24 +276,24 @@
 
   <!-- HERO — full-bleed image with overlay -->
   <header class="hero-full">
-    <img class="bg" src="hero.jpg" alt="ID 피부과 휴니드 스킨부스터">
+    <img class="bg" src="hero.jpg" alt="ID 피부과 휴니드 스킨부스터 · 페이스코드">
     <div class="tint"></div>
     <div class="ov">
       <div class="hmark">ID Skin Clinic <span class="amp">×</span> SIRIAI</div>
-      <h1 class="htitle">휴니드 스킨부스터 <span class="en">(Hu:nide Skin Booster)</span></h1>
-      <div class="hsub">릴스 캠페인 가이드 · 2026</div>
+      <h1 class="htitle">휴니드 스킨부스터<br><span class="en">or</span> 페이스코드</h1>
+      <div class="hsub">릴스 캠페인 가이드 · 2026 · 두 시술 중 택1</div>
     </div>
   </header>
 
   <div class="lede-wrap">
-    <p class="lede">휴니드 스킨부스터를 직접 경험하고, 당신의 무드로 릴스를 만들어 주세요. 이 페이지는 캠페인 <strong>공식 가이드</strong>입니다.</p>
+    <p class="lede"><strong>휴니드 스킨부스터</strong>와 <strong>페이스코드</strong> 중 하나를 선택해 직접 경험하고, 당신의 무드로 릴스를 만들어 주세요. 이 페이지는 캠페인 <strong>공식 가이드</strong>입니다.</p>
   </div>
 
   <!-- META -->
   <div class="meta">
     <div class="meta-cell"><span class="ic">🎬</span><div class="k">Format</div><div class="v">인스타 릴스<small>30초 이상</small></div></div>
     <div class="meta-cell"><span class="ic">💸</span><div class="k">고료</div><div class="v">시술 제공형<small>고료 없음</small></div></div>
-    <div class="meta-cell"><span class="ic">✨</span><div class="k">제공 시술</div><div class="v">휴니드<small>50만원 상당</small></div></div>
+    <div class="meta-cell"><span class="ic">✨</span><div class="k">제공 시술</div><div class="v">두 시술 중 택1<small>휴니드 · 페이스코드</small></div></div>
     <div class="meta-cell"><span class="ic">🗓️</span><div class="k">업로드</div><div class="v">시술 후 10일<small>이내 업로드</small></div></div>
   </div>
 
@@ -289,7 +302,7 @@
     <div class="sum get">
       <div class="sum-h"><span class="mk">+</span><b>받는 혜택</b><span class="en">You get</span></div>
       <ul>
-        <li><b>휴니드 스킨부스터</b> 시술 (50만원 상당 · 수면 포함)</li>
+        <li><b>휴니드 스킨부스터</b> (50만원 상당) 또는 <b>페이스코드</b> (30~150만원 상당) 중 <b>택1</b> 시술</li>
         <li>이벤트 진행코드 제공 가능</li>
         <li>보톡스 추가 제공 협의 가능</li>
       </ul>
@@ -316,15 +329,29 @@
 
   <!-- 02 제공 시술 -->
   <section class="block">
-    <div class="sec-head"><div class="top"><span class="no">02</span><span class="label">The Treatment</span></div><h2>제공 시술</h2></div>
+    <div class="sec-head"><div class="top"><span class="no">02</span><span class="label">The Treatment</span></div><h2>제공 시술</h2><p class="sub">아래 두 시술 중 <strong style="color:var(--ink);font-weight:700">하나를 선택</strong>해 신청해 주세요.</p></div>
+    <div class="offer-opt">Option A</div>
     <div class="offer">
       <div class="nm"><small>제공 항목</small><b>휴니드 스킨부스터</b></div>
-      <div class="pr"><span class="pp">50만</span><span class="ps">수면 포함</span></div>
+      <div class="pr"><span class="pp">50만</span><span class="ps">원 상당</span></div>
     </div>
     <div class="steps">
       <div class="step"><span class="sn">01</span><div><div class="st">내방</div><div class="sd">협의된 예약 일정에 맞춰 ID 피부과 방문</div></div></div>
       <div class="step"><span class="sn">02</span><div><div class="st">피부 상담</div><div class="sd">id SRS-ai 시스템으로 피부 측정 후 맞춤 상담</div></div></div>
       <div class="step"><span class="sn">03</span><div><div class="st">시술</div><div class="sd">수면마취(NPid)로 편안하게 휴니드 시술</div></div></div>
+    </div>
+    <div class="offer-opt">Option B</div>
+    <div class="offer">
+      <div class="nm"><small>제공 항목</small><b>페이스코드</b></div>
+      <div class="pr"><span class="pp">30~150만</span><span class="ps">원 상당</span></div>
+    </div>
+    <p class="offer-desc">AI 얼굴·피부 분석과 의료진의 직접 진단을 바탕으로, 나에게 맞는 시술과 관리 방향을 설계하는 아이디의원의 맞춤형 프로그램입니다. 특정 시술 하나가 아니라 피부 상태와 얼굴의 처짐·볼륨·구조를 함께 살펴 개인별 솔루션을 제안합니다.</p>
+    <div class="steps">
+      <div class="step"><span class="sn">01</span><div><div class="st">내방</div><div class="sd">협의된 예약 일정에 맞춰 ID 피부과 방문</div></div></div>
+      <div class="step"><span class="sn">02</span><div><div class="st">얼굴·피부 측정</div><div class="sd">촬영과 측정을 통해 얼굴 구조, 볼륨, 처짐, 피부 상태를 확인</div></div></div>
+      <div class="step"><span class="sn">03</span><div><div class="st">분석 및 맞춤 설계</div><div class="sd">AI 분석과 의료진의 직접 진단을 바탕으로 개인에게 필요한 시술과 관리 계획을 설계</div></div></div>
+      <div class="step"><span class="sn">04</span><div><div class="st">맞춤 시술</div><div class="sd">설계된 계획에 따라 개인의 얼굴·피부 상태에 적합한 시술 진행</div></div></div>
+      <div class="step"><span class="sn">05</span><div><div class="st">사후 관리</div><div class="sd">시술 후 상태를 확인하고, 이후의 관리 방향과 지속 관리 계획을 안내</div></div></div>
     </div>
   </section>
 
@@ -426,7 +453,7 @@
         <ul>
           <li>일상·자기관리 무드 안에 시술을 자연스럽게 녹이기</li>
           <li>수면마취·AI 피부측정 등 차별점을 '경험담'으로 전달</li>
-          <li>시술명 정확히 언급 — <b>휴니드 스킨부스터</b></li>
+          <li>시술명 정확히 언급 — <b>휴니드 스킨부스터</b> 또는 <b>페이스코드</b></li>
           <li>자연광·무보정 등 리얼한 변화로 신뢰감 주기</li>
           <li>필수 해시태그·멘션 포함, 3개월 이상 게시 유지</li>
         </ul>
@@ -452,6 +479,13 @@
       <div id="formWrap">
         <p class="apply-intro">마감 없이 <strong>상시 모집</strong>되며, 촬영·방문 일정은 선정 후 1:1로 협의합니다. 2차 활용 동의 후 제출이 가능하고, 선정 결과는 개별 안내드립니다.</p>
         <form class="form" id="applyForm" onsubmit="submitForm(event)">
+          <div class="field">
+            <label>지원 시술 <span class="star">*</span> <span class="opt">하나만 선택</span></label>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="product" value="휴니드 스킨부스터" required><span class="cbox"><b>휴니드 스킨부스터</b><small>50만원 상당</small></span></label>
+              <label class="choice"><input type="radio" name="product" value="페이스코드" required><span class="cbox"><b>페이스코드</b><small>30~150만원 상당</small></span></label>
+            </div>
+          </div>
           <div class="field"><label>이름 <span class="star">*</span></label><input type="text" name="name" required autocomplete="name" placeholder="홍길동"></div>
           <div class="field"><label>인스타그램 링크 <span class="star">*</span></label><input type="text" name="instagram" required placeholder="https://instagram.com/your_id"></div>
           <div class="field"><label>휴대폰 번호 <span class="star">*</span></label><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" maxlength="13" oninput="fmtPhone(this)" placeholder="010-1234-5678"></div>
@@ -478,13 +512,13 @@
         <p>소중한 신청 감사합니다.<br>선정 시 개별적으로 안내드릴 예정입니다.</p>
       </div>
     </div>
-    <p class="legal">※ 제출하신 개인정보(이름·연락처·인스타그램·이메일·방문희망일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
+    <p class="legal">※ 제출하신 개인정보(지원 시술·이름·연락처·인스타그램·이메일·방문희망일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
     <p class="legal">※ 신청 완료 후 방문 또는 시술 단계에서 중도 취소 시 비용이 청구될 수 있습니다.</p>
   </section>
 
   <footer>
     <div class="fmark">ID 피부과 <span class="amp">×</span> SIRIAI</div>
-    <div class="finfo">2026 Reels Campaign · 휴니드 스킨부스터 릴스 협업<br>본 페이지는 SIRIAI가 운영합니다.</div>
+    <div class="finfo">2026 Reels Campaign · 휴니드 스킨부스터 · 페이스코드 릴스 협업<br>본 페이지는 SIRIAI가 운영합니다.</div>
     <a href="https://siriai-portfolio.vercel.app/" target="_blank" rel="noopener" class="flink">SIRIAI Portfolio ↗</a>
   </footer>
 
@@ -492,7 +526,7 @@
 
 <div class="cta-bar" id="ctaBar">
   <div class="inner">
-    <div class="cta-meta"><b>휴니드 스킨부스터 릴스 협업</b><span>고료 없음 · 시술 제공형 · 상시 모집</span></div>
+    <div class="cta-meta"><b>휴니드 · 페이스코드 릴스 협업</b><span>두 시술 중 택1 · 시술 제공형 · 상시 모집</span></div>
     <button type="button" onclick="goApply()">신청하기 →</button>
   </div>
 </div>
@@ -534,6 +568,7 @@ async function submitForm(ev){
   var f = ev.target.elements;
   if(!f['consent'].checked) return;
   var payload = {
+    product:f['product'].value,
     name:f['name'].value.trim(), instagram:f['instagram'].value.trim(), phone:f['phone'].value.trim(),
     email:f['email'].value.trim(),
     date1:f['date1'].value.trim(), date2:f['date2'].value.trim(), date3:f['date3'].value.trim(),
