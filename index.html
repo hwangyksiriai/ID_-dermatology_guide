@@ -43,6 +43,8 @@
   /* HERO — full-bleed image */
   .hero-full{ position:relative; min-height:56vh; max-height:500px; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; background:#211c16; }
   .hero-full img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 28%; }
+  .hero-full img.bg-facecode{ object-position:50% 40%; }
+  body[data-p="facecode"] .hero-full img.bg-default{ display:none; }
   .hero-full .tint{ position:absolute; inset:0; z-index:1; pointer-events:none;
     background:linear-gradient(to bottom, rgba(34,28,22,.60) 0%, rgba(34,28,22,.46) 42%, rgba(34,28,22,.86) 100%); }
   .hero-full .wm{ position:absolute; top:4.5%; left:0; right:0; z-index:2; text-align:center; pointer-events:none;
@@ -313,7 +315,8 @@
 
   <!-- HERO — full-bleed image with overlay -->
   <header class="hero-full">
-    <img class="bg" src="hero.jpg" alt="ID 피부과 휴니드 스킨부스터 · 페이스코드">
+    <img class="bg bg-default" src="hero.jpg" alt="ID 피부과 휴니드 스킨부스터">
+    <img class="bg bg-facecode" data-only="facecode" src="facecode.png" alt="ID 피부과 페이스코드 AI 얼굴·피부 분석">
     <div class="tint"></div>
     <div class="ov">
       <div class="hmark">ID Skin Clinic <span class="amp">×</span> SIRIAI</div>
