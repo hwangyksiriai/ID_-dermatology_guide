@@ -12,7 +12,7 @@
 <style>
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
   :root{
-    --bg:#FBF8F2; --paper:#FEFDFA; --ink:#332E26; --body:#6E665A; --muted:#A79F8F; --faint:#CFC8B9;
+    --bg:#FBF8F2; --paper:#FEFDFA; --ink:#2B2620; --body:#564F45; --muted:#8A8272; --faint:#C4BCAC;
     --line:#F0EAE0; --shell:#F9F5EE;
     --accent:#a1917c; --accent-deep:#897b64; --tint:#FBF6EE; --tint-deep:#F2E9DA;
     --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
@@ -27,7 +27,7 @@
     -webkit-tap-highlight-color:transparent; line-height:1.5;
     word-break:keep-all; overflow-wrap:break-word;
   }
-  .page{ max-width:480px; margin:0 auto; background:var(--bg); min-height:100vh; padding-bottom:104px; box-shadow:0 0 80px rgba(35,31,32,.10); overflow:hidden; }
+  .page{ max-width:480px; margin:0 auto; background:var(--bg); min-height:100vh; padding-bottom:104px; box-shadow:0 0 80px rgba(35,31,32,.10); overflow:hidden; overflow:clip; }
   details>summary{ list-style:none; cursor:pointer; }
   details>summary::-webkit-details-marker{ display:none; }
 
@@ -50,7 +50,7 @@
   .hero-full .ov{ position:relative; z-index:3; padding:0 26px 40px; text-align:left; }
   .hero-full .ov .hmark{ font-family:var(--futura); font-style:normal; font-size:14px; font-weight:500; text-transform:uppercase; color:rgba(255,255,255,.82); letter-spacing:.16em; margin-bottom:16px; }
   .hero-full .ov .hmark .amp{ color:#E8C8A0; font-style:normal; }
-  .hero-full .ov .htitle{ font-family:var(--sans); font-size:clamp(38px,11vw,52px); font-weight:800; letter-spacing:-0.035em; color:#FCFAF4; line-height:1.06; text-shadow:0 2px 28px rgba(0,0,0,.5); }
+  .hero-full .ov .htitle{ font-family:var(--sans); font-size:clamp(30px,8.6vw,42px); font-weight:800; letter-spacing:-0.035em; color:#FCFAF4; line-height:1.06; text-shadow:0 2px 28px rgba(0,0,0,.5); }
   .hero-full .ov .htitle .en{ font-family:var(--futura); font-weight:500; font-size:.46em; letter-spacing:.02em; color:rgba(255,255,255,.75); }
   .hero-full .ov .hsub{ margin-top:16px; font-size:14px; font-weight:600; letter-spacing:.06em; color:rgba(252,250,244,.92); text-shadow:0 1px 12px rgba(0,0,0,.4); }
   .hero-full .ov .kick{ display:flex; align-items:center; gap:10px; margin-bottom:20px; }
@@ -74,7 +74,16 @@
   .meta-cell .ic{ font-size:18px; line-height:1; margin-bottom:12px; display:block; }
   .meta-cell .k{ font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
   .meta-cell .v{ font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.01em; }
-  .meta-cell .v small{ display:block; font-size:11.5px; font-weight:500; color:var(--body); margin-top:3px; letter-spacing:0; }
+  .meta-cell .v small{ display:block; font-size:12px; font-weight:500; color:var(--body); margin-top:3px; letter-spacing:0; }
+
+  /* SECTION NAV */
+  .secnav{ position:sticky; top:0; z-index:50; background:rgba(251,248,242,.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .secnav ul{ list-style:none; display:flex; gap:6px; overflow-x:auto; padding:10px 16px; scrollbar-width:none; }
+  .secnav ul::-webkit-scrollbar{ display:none; }
+  .secnav a{ display:block; white-space:nowrap; font-size:13px; font-weight:700; color:var(--body); text-decoration:none; padding:7px 13px; border-radius:20px; border:1px solid var(--line); background:var(--paper); transition:background .18s, color .18s, border-color .18s; }
+  .secnav a.on{ background:var(--ink); border-color:var(--ink); color:#FCFAF4; }
+  .secnav a.cta{ background:var(--accent); border-color:var(--accent); color:#FCFAF4; }
+  section.block, #apply{ scroll-margin-top:56px; }
 
   /* SECTION SCAFFOLD */
   section.block{ padding:42px 24px; }
@@ -84,7 +93,7 @@
   .sec-head .no{ font-family:var(--serif); font-style:normal; font-size:30px; color:var(--accent); line-height:1; }
   .sec-head .label{ font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
   .sec-head h2{ font-size:24px; font-weight:800; letter-spacing:-0.035em; color:var(--ink); line-height:1.2; }
-  .sec-head .sub{ margin-top:10px; font-size:13px; line-height:1.7; color:var(--body); text-wrap:pretty; }
+  .sec-head .sub{ margin-top:10px; font-size:14px; line-height:1.7; color:var(--body); text-wrap:pretty; }
 
   /* SUMMARY */
   .summary{ display:flex; flex-direction:column; gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
@@ -96,7 +105,7 @@
   .sum-h b{ font-size:14px; font-weight:800; letter-spacing:.02em; color:var(--ink); }
   .sum-h .en{ font-family:var(--serif); font-style:normal; font-size:14px; color:var(--muted); margin-left:auto; }
   .sum ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
-  .sum li{ font-size:13px; line-height:1.6; color:var(--body); padding-left:18px; position:relative; text-wrap:pretty; }
+  .sum li{ font-size:14px; line-height:1.6; color:var(--body); padding-left:18px; position:relative; text-wrap:pretty; }
   .sum li::before{ content:''; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
   .sum.todo li::before{ background:var(--faint); }
   .sum li b{ color:var(--ink); font-weight:700; }
@@ -104,7 +113,7 @@
   /* CALLOUT */
   .callout .quote{ font-family:var(--quote-font, var(--sans)); font-weight:var(--quote-weight,800); font-size:var(--quote-size,25px); color:var(--ink); line-height:1.42; letter-spacing:-0.03em; margin-bottom:18px; text-wrap:balance; }
   .callout .quote .mark{ font-family:inherit; font-style:var(--quote-mark-style,normal); font-weight:inherit; color:var(--accent); }
-  .callout p{ font-size:13.5px; line-height:1.9; color:var(--body); text-wrap:pretty; }
+  .callout p{ font-size:14.5px; line-height:1.9; color:var(--body); text-wrap:pretty; }
   .callout p .hl{ color:var(--accent); font-weight:700; }
   .callout p strong{ color:var(--ink); font-weight:700; }
   .rule{ height:1px; background:var(--line); margin:30px 0; }
@@ -116,16 +125,26 @@
   .offer .pr{ text-align:right; flex-shrink:0; }
   .offer .pr .pp{ font-family:var(--serif); font-style:normal; font-size:34px; color:var(--tint-deep); line-height:.9; }
   .offer .pr .ps{ display:block; font-size:10.5px; color:rgba(255,255,255,.55); margin-top:5px; letter-spacing:.04em; }
+  .tabs{ display:grid; grid-template-columns:1fr 1fr; gap:6px; background:var(--tint-deep); border-radius:8px; padding:5px; margin-bottom:16px; }
+  .tab{ font-family:inherit; border:none; background:transparent; border-radius:6px; padding:12px 8px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--body); transition:background .18s, color .18s, box-shadow .18s; }
+  .tab b{ font-size:14.5px; font-weight:800; letter-spacing:-0.01em; }
+  .tab small{ font-size:11.5px; font-weight:600; opacity:.8; }
+  .tab[aria-selected="true"]{ background:var(--paper); color:var(--ink); box-shadow:0 2px 10px rgba(35,31,32,.10); }
+  .tab[aria-selected="true"] small{ color:var(--accent-deep); opacity:1; }
+  .tab-panel[hidden]{ display:none; }
+  .pick-btn{ display:block; width:100%; margin-top:18px; font-family:inherit; font-size:14.5px; font-weight:800; color:#FCFAF4; background:var(--accent); border:none; border-radius:6px; padding:16px; cursor:pointer; transition:background .18s; }
+  .pick-btn:hover{ background:var(--accent-deep); }
+  .only-tag{ display:inline-flex; align-items:center; gap:5px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--accent-deep); background:var(--tint); border:1px solid var(--tint-deep); border-radius:20px; padding:5px 11px; }
   .offer-opt{ display:flex; align-items:center; gap:10px; margin-bottom:12px; font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
   .offer-opt::after{ content:''; flex:1; height:1px; background:var(--line); }
-  .offer-desc{ font-size:13px; line-height:1.8; color:var(--body); margin-bottom:8px; text-wrap:pretty; }
+  .offer-desc{ font-size:14px; line-height:1.8; color:var(--body); margin-bottom:8px; text-wrap:pretty; }
   .steps + .offer-opt{ margin-top:36px; }
   .steps{ display:flex; flex-direction:column; }
   .step{ display:flex; gap:18px; align-items:flex-start; padding:18px 2px; border-bottom:1px solid var(--line); }
   .step:last-child{ border-bottom:none; }
   .step .sn{ font-family:var(--serif); font-style:normal; font-size:26px; color:var(--accent); line-height:1; flex-shrink:0; width:34px; }
   .step .st{ font-size:15px; font-weight:800; color:var(--ink); margin-bottom:4px; letter-spacing:-0.01em; }
-  .step .sd{ font-size:12.5px; line-height:1.65; color:var(--body); }
+  .step .sd{ font-size:13.5px; line-height:1.65; color:var(--body); }
 
   /* DIFF */
   .diff{ display:flex; flex-direction:column; gap:14px; }
@@ -133,7 +152,7 @@
   .diff-tag{ display:inline-block; font-family:var(--serif); font-style:normal; font-size:15px; color:var(--accent); margin-bottom:12px; }
   .diff-h{ font-size:19px; font-weight:800; letter-spacing:-0.03em; color:var(--ink); margin-bottom:11px; }
   .diff-h .dot{ color:var(--accent); }
-  .diff-p{ font-size:12.5px; line-height:1.8; color:var(--body); text-wrap:pretty; }
+  .diff-p{ font-size:13.5px; line-height:1.8; color:var(--body); text-wrap:pretty; }
   .diff-p b{ color:var(--ink); font-weight:700; }
   .diff-link{ display:inline-flex; align-items:center; gap:5px; margin-top:15px; font-size:11px; font-weight:700; letter-spacing:.03em; color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px; }
   .diff-link:hover{ opacity:.65; }
@@ -155,15 +174,15 @@
   .acc-item[open] .acc-num{ color:var(--accent); }
   .acc-titles{ flex:1; min-width:0; }
   .acc-title{ display:block; font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.02em; }
-  .acc-subtitle{ display:block; font-size:11.5px; color:var(--muted); margin-top:3px; letter-spacing:.01em; }
+  .acc-subtitle{ display:block; font-size:12px; color:var(--muted); margin-top:3px; letter-spacing:.01em; }
   .vb-mark{ font-family:var(--serif); font-size:22px; color:var(--accent); line-height:1; transition:transform .28s ease; flex-shrink:0; }
   .acc-item[open] .vb-mark{ transform:rotate(45deg); }
   .acc-panel{ padding:0 2px 24px 56px; }
-  .concept-text{ font-size:12.5px; line-height:1.85; color:var(--body); margin-bottom:14px; text-wrap:pretty; }
+  .concept-text{ font-size:13.5px; line-height:1.85; color:var(--body); margin-bottom:14px; text-wrap:pretty; }
   .guide-steps{ display:flex; flex-direction:column; gap:9px; }
   .guide-step{ display:flex; gap:11px; align-items:baseline; }
   .guide-n{ font-family:var(--serif); font-style:normal; font-size:13px; color:var(--accent); width:16px; flex-shrink:0; }
-  .guide-text{ font-size:12px; line-height:1.6; color:var(--body); }
+  .guide-text{ font-size:13px; line-height:1.6; color:var(--body); }
 
   /* COPYBOX */
   .field-label{ font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
@@ -171,7 +190,7 @@
   .copybtn{ position:absolute; top:10px; right:10px; background:var(--ink); color:#FCFAF4; border:none; border-radius:3px; font-size:10px; font-weight:700; letter-spacing:.04em; padding:8px 12px; font-family:inherit; cursor:pointer; transition:background .18s; }
   .copybtn.done{ background:var(--accent); }
   .req-list{ list-style:none; display:flex; flex-direction:column; gap:12px; margin-top:6px; }
-  .req-list li{ font-size:13px; line-height:1.7; color:var(--body); padding-left:18px; position:relative; text-wrap:pretty; }
+  .req-list li{ font-size:14px; line-height:1.7; color:var(--body); padding-left:18px; position:relative; text-wrap:pretty; }
   .req-list li::before{ content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
   .req-list b{ color:var(--ink); font-weight:700; }
   .req-list .em{ background:var(--tint); box-shadow:inset 0 -1px 0 var(--tint-deep); padding:1px 3px; border-radius:2px; color:var(--ink); font-weight:600; }
@@ -185,7 +204,7 @@
   .dd-do .dd-head{ color:#5C7A4E; }
   .dd-dont .dd-head{ color:var(--accent); }
   .dd-col ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
-  .dd-col li{ font-size:12.5px; line-height:1.6; padding-left:22px; position:relative; color:var(--body); text-wrap:pretty; }
+  .dd-col li{ font-size:13.5px; line-height:1.6; padding-left:22px; position:relative; color:var(--body); text-wrap:pretty; }
   .dd-do li::before{ content:'✓'; position:absolute; left:0; color:#5C7A4E; font-weight:800; }
   .dd-dont li::before{ content:'✕'; position:absolute; left:0; color:var(--accent); font-weight:800; }
   .dd-col li b{ font-weight:700; color:var(--ink); }
@@ -216,12 +235,12 @@
   .pref-row input{ flex:1; }
   .consent{ display:flex; align-items:flex-start; gap:12px; background:var(--tint); border-radius:4px; padding:16px; cursor:pointer; }
   .consent input{ width:18px; height:18px; flex-shrink:0; margin-top:1px; accent-color:var(--accent); cursor:pointer; }
-  .consent span{ font-size:11.5px; line-height:1.65; color:#6a6358; }
+  .consent span{ font-size:12.5px; line-height:1.65; color:var(--body); }
   .consent span b{ color:var(--ink); font-weight:700; }
   .submit-btn{ background:var(--accent); color:#FCFAF4; border:none; border-radius:4px; padding:17px; font-size:14.5px; font-weight:800; letter-spacing:.02em; font-family:inherit; cursor:pointer; transition:background .18s, opacity .18s; }
   .submit-btn:hover:not(:disabled){ background:var(--accent-deep); }
   .submit-btn:disabled{ background:var(--tint-deep); color:var(--muted); cursor:not-allowed; }
-  .legal{ font-size:10.5px; line-height:1.75; color:var(--faint); margin-top:18px; text-align:center; text-wrap:pretty; }
+  .legal{ font-size:11.5px; line-height:1.75; color:var(--muted); margin-top:18px; text-align:center; text-wrap:pretty; }
   .form-done{ display:none; text-align:center; padding:30px 8px; }
   .form-done .fd-check{ font-family:var(--serif); font-style:normal; font-size:48px; color:var(--accent); margin-bottom:14px; line-height:1; }
   .form-done h3{ font-size:21px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); margin-bottom:12px; }
@@ -316,8 +335,20 @@
     </div>
   </div>
 
+  <nav class="secnav" aria-label="섹션 바로가기">
+    <ul>
+      <li><a href="#concept">컨셉</a></li>
+      <li><a href="#treatment">제공 시술</a></li>
+      <li><a href="#why">차별점</a></li>
+      <li><a href="#reference">레퍼런스</a></li>
+      <li><a href="#musthave">필수 항목</a></li>
+      <li><a href="#guide">DO &amp; DON'T</a></li>
+      <li><a href="#apply" class="cta">신청하기</a></li>
+    </ul>
+  </nav>
+
   <!-- 01 방향 -->
-  <section class="block callout">
+  <section class="block callout" id="concept">
     <div class="sec-head"><div class="top"><span class="no">01</span><span class="label">Content Concept</span></div><h2>콘텐츠 컨셉</h2></div>
     <p class="quote">"아, <span class="mark">저거</span> 나도 하고싶다"</p>
     <p>단순히 병원을 찍고 시술을 받는 후기 콘텐츠가 아닙니다. 영상을 본 사람이 자연스럽게 <span class="hl">"나도 해보고 싶다"</span>고 느껴지게 해주세요.</p>
@@ -326,9 +357,13 @@
   </section>
 
   <!-- 02 제공 시술 -->
-  <section class="block">
+  <section class="block" id="treatment">
     <div class="sec-head"><div class="top"><span class="no">02</span><span class="label">The Treatment</span></div><h2>제공 시술</h2><p class="sub">아래 두 시술 중 <strong style="color:var(--ink);font-weight:700">하나를 선택</strong>해 신청해 주세요.</p></div>
-    <div class="offer-opt">Option A</div>
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab" role="tab" data-k="hunide" aria-controls="panel-hunide" aria-selected="true" onclick="selTab('hunide')"><b>휴니드 스킨부스터</b><small>50만원 상당</small></button>
+      <button type="button" class="tab" role="tab" data-k="facecode" aria-controls="panel-facecode" aria-selected="false" onclick="selTab('facecode')"><b>페이스코드</b><small>30~150만원 상당</small></button>
+    </div>
+    <div class="tab-panel" role="tabpanel" id="panel-hunide">
     <div class="offer">
       <div class="nm"><small>제공 항목</small><b>휴니드 스킨부스터</b></div>
       <div class="pr"><span class="pp">50만</span><span class="ps">원 상당</span></div>
@@ -338,7 +373,9 @@
       <div class="step"><span class="sn">02</span><div><div class="st">피부 상담</div><div class="sd">id SRS-ai 시스템으로 피부 측정 후 맞춤 상담</div></div></div>
       <div class="step"><span class="sn">03</span><div><div class="st">시술</div><div class="sd">수면마취(NPid)로 편안하게 휴니드 시술</div></div></div>
     </div>
-    <div class="offer-opt">Option B</div>
+    <button type="button" class="pick-btn" onclick="pickApply('휴니드 스킨부스터')">휴니드 스킨부스터로 신청하기 →</button>
+    </div>
+    <div class="tab-panel" role="tabpanel" id="panel-facecode" hidden>
     <div class="offer">
       <div class="nm"><small>제공 항목</small><b>페이스코드</b></div>
       <div class="pr"><span class="pp">30~150만</span><span class="ps">원 상당</span></div>
@@ -351,11 +388,13 @@
       <div class="step"><span class="sn">04</span><div><div class="st">맞춤 시술</div><div class="sd">설계된 계획에 따라 개인의 얼굴·피부 상태에 적합한 시술 진행</div></div></div>
       <div class="step"><span class="sn">05</span><div><div class="st">사후 관리</div><div class="sd">시술 후 상태를 확인하고, 이후의 관리 방향과 지속 관리 계획을 안내</div></div></div>
     </div>
+    <button type="button" class="pick-btn" onclick="pickApply('페이스코드')">페이스코드로 신청하기 →</button>
+    </div>
   </section>
 
   <!-- 03 차별점 -->
-  <section class="block">
-    <div class="sec-head"><div class="top"><span class="no">03</span><span class="label">Why ID</span></div><h2>ID만의 차별점</h2><p class="sub">메디컬 뷰티 노하우를 담아 아이디에서 새롭게 출시한 <strong style="color:var(--ink);font-weight:700">차세대 콜라겐 스킨부스터</strong>입니다. 릴스에 녹여주면 좋은 두 포인트예요.</p></div>
+  <section class="block" id="why">
+    <div class="sec-head"><div class="top"><span class="no">03</span><span class="label">Why ID</span></div><h2>ID만의 차별점</h2><p class="sub">메디컬 뷰티 노하우를 담아 아이디에서 새롭게 출시한 <strong style="color:var(--ink);font-weight:700">차세대 콜라겐 스킨부스터</strong>입니다. 릴스에 녹여주면 좋은 두 포인트예요.</p><span class="only-tag">✦ 휴니드 스킨부스터 기준</span></div>
     <div class="diff">
       <div class="diff-card">
         <span class="diff-tag">Point 01</span>
@@ -372,15 +411,19 @@
     </div>
   </section>
 
-  <!-- 04 콘텐츠 컨셉 -->
-  <section class="block">
+  <!-- 04 레퍼런스 -->
+  <section class="block" id="reference">
     <div class="sec-head"><div class="top"><span class="no">04</span><span class="label">Reference</span></div><h2>레퍼런스</h2><p class="sub">아래 컨셉은 <strong style="color:var(--ink);font-weight:700">참고용 제안</strong>입니다. 꼭 이 중에서 고르지 않아도 되며, 방향에 맞는다면 본인 스타일대로 자유롭게 제작하셔도 좋습니다.</p></div>
     <a class="ref-link" href="https://www.instagram.com/reels/DZr2oSLzKJk/" target="_blank" rel="noopener">
       <span class="ref-ic">▶</span>
       <span class="ref-txt"><b>공통 레퍼런스</b><span>이런 무드로 제작해 주세요 · 인스타 릴스 보기</span></span>
       <span class="ref-arrow">↗</span>
     </a>
-    <div class="accordion">
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab" role="tab" data-k="hunide" aria-controls="ref-hunide" aria-selected="true" onclick="selTab('hunide')"><b>휴니드 스킨부스터</b><small>레퍼런스 4</small></button>
+      <button type="button" class="tab" role="tab" data-k="facecode" aria-controls="ref-facecode" aria-selected="false" onclick="selTab('facecode')"><b>페이스코드</b><small>레퍼런스 4</small></button>
+    </div>
+    <div class="accordion tab-panel" role="tabpanel" id="ref-hunide">
       <details class="acc-item" open>
         <summary class="acc-header"><span class="acc-num">01</span><span class="acc-titles"><span class="acc-title">요즘 나 피부 왜 이래?</span><span class="acc-subtitle">시술 전후 변화 기록형</span></span><span class="vb-mark">+</span></summary>
         <div class="acc-panel">
@@ -426,10 +469,56 @@
         </div>
       </details>
     </div>
+    <div class="accordion tab-panel" role="tabpanel" id="ref-facecode" hidden>
+      <details class="acc-item" open>
+        <summary class="acc-header"><span class="acc-num">01</span><span class="acc-titles"><span class="acc-title">내 얼굴엔 어떤 관리가 맞을까?</span><span class="acc-subtitle">고민 공감 · 맞춤 상담형</span></span><span class="vb-mark">+</span></summary>
+        <div class="acc-panel">
+          <p class="concept-text">관리는 받고 싶지만 어떤 시술을 선택해야 할지 몰랐던 경험으로 시작합니다. 평소 고민을 이야기하고, 분석과 상담을 통해 나에게 맞는 관리 방향을 찾아가는 과정을 담아주세요.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="guide-n">01</span><span class="guide-text">“관리받고 싶은데, 나한테 뭐가 맞는지 모르겠더라고요” 등 본인의 실제 고민으로 시작</span></div>
+            <div class="guide-step"><span class="guide-n">02</span><span class="guide-text">얼굴·피부 분석과 의료진 상담을 통해 궁금했던 점을 확인하는 모습 소개</span></div>
+            <div class="guide-step"><span class="guide-n">03</span><span class="guide-text">상담을 바탕으로 진행한 시술과, 맞춤 관리를 경험하며 느낀 점으로 마무리</span></div>
+          </div>
+        </div>
+      </details>
+      <details class="acc-item">
+        <summary class="acc-header"><span class="acc-num">02</span><span class="acc-titles"><span class="acc-title">내 얼굴, 이렇게 분석해준다고?</span><span class="acc-subtitle">분석 체험 · 호기심 유발형</span></span><span class="vb-mark">+</span></summary>
+        <div class="acc-panel">
+          <p class="concept-text">평소 거울로만 보던 얼굴을 분석과 상담을 통해 살펴보는 경험을 담습니다. 어려운 수치나 전문 용어보다는, 상담 중 새롭게 알게 된 점을 본인의 언어로 쉽게 전달해 주세요.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="guide-n">01</span><span class="guide-text">촬영 가능한 분석 장면이나 본인의 결과 일부를 보여주며 호기심 유도</span></div>
+            <div class="guide-step"><span class="guide-n">02</span><span class="guide-text">“평소 궁금했던 부분을 상담에서 물어봤어요”처럼 실제 질문과 설명 연결</span></div>
+            <div class="guide-step"><span class="guide-n">03</span><span class="guide-text">시술명을 나열하기보다, 어떤 설명을 듣고 어떤 관리 방향으로 진행했는지 소개</span></div>
+          </div>
+        </div>
+      </details>
+      <details class="acc-item">
+        <summary class="acc-header"><span class="acc-num">03</span><span class="acc-titles"><span class="acc-title">오늘은 나를 위해 관리받는 날</span><span class="acc-subtitle">자기관리 · 일상 브이로그형</span></span><span class="vb-mark">+</span></summary>
+        <div class="acc-panel">
+          <p class="concept-text">평소 자기관리 루틴에 페이스코드 체험을 자연스럽게 연결합니다. 외출 준비부터 내원, 상담, 시술 후 귀가까지 하루의 흐름 속에서 보여주세요.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="guide-n">01</span><span class="guide-text">외출 준비나 평소 관리 루틴을 보여주며 “오늘은 상담받고 관리하는 날”로 시작</span></div>
+            <div class="guide-step"><span class="guide-n">02</span><span class="guide-text">병원 방문 → 분석·상담 → 맞춤 시술 과정을 짧은 장면들로 연결</span></div>
+            <div class="guide-step"><span class="guide-n">03</span><span class="guide-text">상담과 시술 과정에서 인상 깊었던 점을 이야기하며 일상적인 톤으로 마무리</span></div>
+          </div>
+        </div>
+      </details>
+      <details class="acc-item">
+        <summary class="acc-header"><span class="acc-num">04</span><span class="acc-titles"><span class="acc-title">관리받고 난 뒤, 솔직하게 기록해봤어요</span><span class="acc-subtitle">시술 후 경과 · 경험 기록형</span></span><span class="vb-mark">+</span></summary>
+        <div class="acc-panel">
+          <p class="concept-text">시술 당일뿐 아니라 이후의 상태와 관리 과정을 시간의 흐름에 따라 기록합니다. 특정한 변화를 강조하기보다, 본인이 실제로 경험한 경과와 느낀 점을 담아주세요.</p>
+          <div class="guide-steps">
+            <div class="guide-step"><span class="guide-n">01</span><span class="guide-text">시술 전 고민과 상담을 통해 정한 관리 방향을 짧게 소개</span></div>
+            <div class="guide-step"><span class="guide-n">02</span><span class="guide-text">시술 당일과 이후의 상태를 실제 촬영 시점에 맞춰 기록</span></div>
+            <div class="guide-step"><span class="guide-n">03</span><span class="guide-text">개인적으로 느낀 점과 의료진에게 안내받은 사후 관리 내용을 덧붙여 마무리</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
   </section>
 
   <!-- 05 필수 항목 -->
-  <section class="block">
+  <section class="block" id="musthave">
     <div class="sec-head"><div class="top"><span class="no">05</span><span class="label">Must-Haves</span></div><h2>필수 항목</h2><p class="sub">아래 항목은 꼭 포함해 주세요.</p></div>
     <div class="field-label">필수 해시태그 · 계정 멘션</div>
     <div class="copybox" style="padding:16px 18px;color:var(--muted);font-weight:600">추후 협의 후 안내드립니다.</div>
@@ -443,7 +532,7 @@
   </section>
 
   <!-- 06 DO & DON'T -->
-  <section class="block">
+  <section class="block" id="guide">
     <div class="sec-head"><div class="top"><span class="no">06</span><span class="label">Guidelines</span></div><h2>DO &amp; DON'T</h2></div>
     <div class="dd">
       <div class="dd-col dd-do">
@@ -540,6 +629,36 @@ function cp(btn, box){
     setTimeout(function(){ btn.textContent = '복사'; btn.classList.remove('done'); }, 1600);
   });
 }
+/* 시술 탭 — 02 제공 시술 · 04 레퍼런스 탭이 함께 전환됨 */
+function selTab(k){
+  document.querySelectorAll('.tab[data-k]').forEach(function(t){
+    var on = t.getAttribute('data-k') === k;
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+}
+function pickApply(v){
+  var r = document.querySelector('input[name="product"][value="'+v+'"]');
+  if(r) r.checked = true;
+  goApply();
+}
+/* 섹션 바로가기 — 현재 보고 있는 섹션 강조 */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var links = document.querySelectorAll('.secnav a:not(.cta)');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(a){ a.classList.remove('on'); });
+      var a = map[e.target.id];
+      a.classList.add('on');
+      a.parentNode.parentNode.scrollTo({ left:a.offsetLeft - 16, behavior:'smooth' });
+    });
+  }, { rootMargin:'-45% 0px -50% 0px' });
+  Object.keys(map).forEach(function(id){ var el = document.getElementById(id); if(el) io.observe(el); });
+})();
 function consentToggle(cb){ document.getElementById('submitBtn').disabled = !cb.checked; }
 function goApply(){ document.getElementById('apply').scrollIntoView({ behavior:'smooth', block:'start' }); }
 function fmtPhone(el){
