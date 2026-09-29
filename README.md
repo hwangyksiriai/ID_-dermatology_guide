@@ -1,12 +1,18 @@
 # ID 피부과 × SIRIAI — 인플루언서 릴스 가이드
 
-ID 피부과 휴니드 스킨부스터 캠페인에 참여하는 인플루언서용 공식 릴스 가이드 페이지입니다.
+ID 피부과 휴니드 스킨부스터 · 페이스코드 캠페인(두 시술 중 택1)에 참여하는 인플루언서용 공식 릴스 가이드 페이지입니다.
 
 ## 구성
 - `index.html` — 가이드 본체 (모바일 우선 단일 페이지, 신청 폼 포함)
 - `배너.png` — 히어로 배너 이미지
 - `apps-script.gs` — 신청 폼 → 구글시트 연동용 Apps Script 코드
 - `README_신청폼_연동.md` — 구글시트 연동 설정 가이드
+
+## 시술별 가이드
+첫 화면에서 시술(휴니드 스킨부스터 / 페이스코드)을 선택하면 해당 시술 가이드만 펼쳐집니다.
+시술별 링크로 바로 열 수도 있습니다.
+- 휴니드: `https://id-dermatology-guide.vercel.app/?p=hunide`
+- 페이스코드: `https://id-dermatology-guide.vercel.app/?p=facecode`
 
 ## 신청 폼 연동
 `index.html` 상단 스크립트의 `GAS_URL` 값을 배포한 Apps Script 웹앱 URL로 교체하면
