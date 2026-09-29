@@ -76,14 +76,49 @@
   .meta-cell .v{ font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.01em; }
   .meta-cell .v small{ display:block; font-size:12px; font-weight:500; color:var(--body); margin-top:3px; letter-spacing:0; }
 
+  /* PRODUCT FILTER — 선택한 시술 내용만 표시 */
+  body:not([data-p="hunide"]) [data-only="hunide"],
+  body:not([data-p="facecode"]) [data-only="facecode"]{ display:none!important; }
+  body:not([data-p]) #guideWrap{ display:none; }
+
+  /* PICKER (첫 화면 시술 선택) */
+  .picker{ padding:6px 24px 44px; }
+  .pk-h{ font-size:21px; font-weight:800; letter-spacing:-0.03em; color:var(--ink); margin-bottom:6px; }
+  .pk-s{ font-size:13.5px; color:var(--body); margin-bottom:18px; }
+  .pk-list{ display:flex; flex-direction:column; gap:12px; }
+  .pk-card{ position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:6px; width:100%; text-align:left; font-family:inherit; cursor:pointer; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:22px 22px 20px; box-shadow:0 4px 18px rgba(35,31,32,.05); transition:border-color .18s, box-shadow .18s, transform .18s; }
+  .pk-card:hover{ border-color:var(--accent); box-shadow:0 8px 26px rgba(35,31,32,.10); transform:translateY(-2px); }
+  .pk-card[aria-pressed="true"]{ border-color:var(--accent); background:var(--tint); box-shadow:inset 0 0 0 1px var(--accent); }
+  .pk-tag{ font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+  .pk-card b{ font-size:20px; font-weight:800; letter-spacing:-0.03em; color:var(--ink); }
+  .pk-v{ font-size:13px; font-weight:700; color:var(--accent-deep); }
+  .pk-d{ font-size:13.5px; line-height:1.65; color:var(--body); text-wrap:pretty; }
+  .pk-go{ margin-top:8px; align-self:stretch; text-align:center; font-size:14px; font-weight:800; color:#FCFAF4; background:var(--ink); border-radius:8px; padding:13px; }
+  .pk-card[aria-pressed="true"] .pk-go{ background:var(--accent); }
+
+  /* GUIDE SHEET — 선택 시 아래에서 위로 올라옴 */
+  #guideWrap{ position:relative; background:var(--bg); border-radius:24px 24px 0 0; box-shadow:0 -14px 40px rgba(35,31,32,.10); border-top:1px solid var(--line); counter-reset:sec; scroll-margin-top:0; }
+  #guideWrap::before{ content:''; display:block; width:40px; height:4px; border-radius:2px; background:var(--faint); margin:12px auto 0; }
+  #guideWrap.rise{ animation:sheetUp .75s cubic-bezier(.22,1,.36,1); }
+  @keyframes sheetUp{ from{ transform:translateY(60vh); opacity:.4; } to{ transform:translateY(0); opacity:1; } }
+  .g-head{ padding:22px 24px 26px; }
+  .g-head .eyebrow{ display:block; margin-bottom:8px; }
+  .g-head h2{ font-size:26px; font-weight:800; letter-spacing:-0.035em; color:var(--ink); line-height:1.2; }
+  .g-head p{ margin-top:8px; font-size:13.5px; color:var(--body); }
+  section.block{ counter-increment:sec; }
+  .sec-head .no::before{ content:counter(sec, decimal-leading-zero); }
+
   /* SECTION NAV */
-  .secnav{ position:sticky; top:0; z-index:50; background:rgba(251,248,242,.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .secnav{ display:block; padding:0; position:sticky; top:0; z-index:50; background:rgba(251,248,242,.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .secnav .gbar{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 16px 0; }
+  .secnav .gbar b{ font-size:13px; font-weight:800; color:var(--ink); }
+  .secnav .gbar button{ font-family:inherit; font-size:12px; font-weight:700; color:var(--accent-deep); background:none; border:none; cursor:pointer; padding:4px 0; }
   .secnav ul{ list-style:none; display:flex; gap:6px; overflow-x:auto; padding:10px 16px; scrollbar-width:none; }
   .secnav ul::-webkit-scrollbar{ display:none; }
   .secnav a{ display:block; white-space:nowrap; font-size:13px; font-weight:700; color:var(--body); text-decoration:none; padding:7px 13px; border-radius:20px; border:1px solid var(--line); background:var(--paper); transition:background .18s, color .18s, border-color .18s; }
   .secnav a.on{ background:var(--ink); border-color:var(--ink); color:#FCFAF4; }
   .secnav a.cta{ background:var(--accent); border-color:var(--accent); color:#FCFAF4; }
-  section.block, #apply{ scroll-margin-top:56px; }
+  section.block, #apply{ scroll-margin-top:96px; }
 
   /* SECTION SCAFFOLD */
   section.block{ padding:42px 24px; }
@@ -125,20 +160,9 @@
   .offer .pr{ text-align:right; flex-shrink:0; }
   .offer .pr .pp{ font-family:var(--serif); font-style:normal; font-size:34px; color:var(--tint-deep); line-height:.9; }
   .offer .pr .ps{ display:block; font-size:10.5px; color:rgba(255,255,255,.55); margin-top:5px; letter-spacing:.04em; }
-  .tabs{ display:grid; grid-template-columns:1fr 1fr; gap:6px; background:var(--tint-deep); border-radius:8px; padding:5px; margin-bottom:16px; }
-  .tab{ font-family:inherit; border:none; background:transparent; border-radius:6px; padding:12px 8px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--body); transition:background .18s, color .18s, box-shadow .18s; }
-  .tab b{ font-size:14.5px; font-weight:800; letter-spacing:-0.01em; }
-  .tab small{ font-size:11.5px; font-weight:600; opacity:.8; }
-  .tab[aria-selected="true"]{ background:var(--paper); color:var(--ink); box-shadow:0 2px 10px rgba(35,31,32,.10); }
-  .tab[aria-selected="true"] small{ color:var(--accent-deep); opacity:1; }
-  .tab-panel[hidden]{ display:none; }
   .pick-btn{ display:block; width:100%; margin-top:18px; font-family:inherit; font-size:14.5px; font-weight:800; color:#FCFAF4; background:var(--accent); border:none; border-radius:6px; padding:16px; cursor:pointer; transition:background .18s; }
   .pick-btn:hover{ background:var(--accent-deep); }
-  .only-tag{ display:inline-flex; align-items:center; gap:5px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--accent-deep); background:var(--tint); border:1px solid var(--tint-deep); border-radius:20px; padding:5px 11px; }
-  .offer-opt{ display:flex; align-items:center; gap:10px; margin-bottom:12px; font-size:10.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-  .offer-opt::after{ content:''; flex:1; height:1px; background:var(--line); }
   .offer-desc{ font-size:14px; line-height:1.8; color:var(--body); margin-bottom:8px; text-wrap:pretty; }
-  .steps + .offer-opt{ margin-top:36px; }
   .steps{ display:flex; flex-direction:column; }
   .step{ display:flex; gap:18px; align-items:flex-start; padding:18px 2px; border-bottom:1px solid var(--line); }
   .step:last-child{ border-bottom:none; }
@@ -219,15 +243,9 @@
   .field input{ width:100%; font-family:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:13px 15px; outline:none; transition:border-color .18s, background .18s; }
   .field input:focus{ border-color:var(--accent); background:#fff; }
   .field input::placeholder{ color:var(--faint); }
-  .choices{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .choice{ position:relative; display:block; cursor:pointer; }
-  .choice input{ position:absolute; opacity:0; pointer-events:none; }
-  .choice .cbox{ display:flex; flex-direction:column; gap:4px; height:100%; background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:14px 15px; transition:border-color .18s, background .18s; }
-  .choice .cbox b{ font-size:14px; font-weight:800; color:var(--ink); letter-spacing:-0.01em; }
-  .choice .cbox small{ font-size:11px; color:var(--muted); }
-  .choice input:checked + .cbox{ border-color:var(--accent); background:var(--tint); box-shadow:inset 0 0 0 1px var(--accent); }
-  .choice input:checked + .cbox small{ color:var(--accent-deep); }
-  .choice input:focus-visible + .cbox{ outline:2px solid var(--accent); outline-offset:2px; }
+  .fixed-pick{ display:flex; align-items:center; justify-content:space-between; gap:10px; background:var(--tint); border:1px solid var(--accent); border-radius:4px; padding:13px 15px; }
+  .fixed-pick b{ font-size:14.5px; font-weight:800; color:var(--ink); }
+  .fixed-pick button{ font-family:inherit; font-size:12px; font-weight:700; color:var(--accent-deep); background:none; border:none; cursor:pointer; text-decoration:underline; }
   .date-notice{ display:flex; align-items:center; gap:8px; background:var(--tint); border:1px solid var(--accent); border-radius:4px; padding:11px 14px; margin-bottom:12px; font-size:11.5px; font-weight:700; color:var(--accent-deep); line-height:1.6; }
   .prefs{ display:flex; flex-direction:column; gap:10px; }
   .pref-row{ display:flex; align-items:center; gap:12px; }
@@ -259,7 +277,7 @@
   .cta-bar .inner{ max-width:480px; margin:0 auto; display:flex; align-items:center; gap:14px; }
   .cta-meta{ flex:1; min-width:0; color:#FCFAF4; }
   .cta-meta b{ display:block; font-size:13.5px; font-weight:800; letter-spacing:-0.01em; }
-  .cta-meta span{ font-size:10.5px; color:rgba(252,250,244,.62); letter-spacing:.02em; }
+  .cta-meta > span{ font-size:10.5px; color:rgba(252,250,244,.62); letter-spacing:.02em; }
   .cta-bar button{ flex-shrink:0; background:var(--accent); color:#FCFAF4; border:none; padding:14px 24px; font-size:14px; font-weight:800; border-radius:4px; cursor:pointer; font-family:inherit; }
 
   @keyframes fadeUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
@@ -308,11 +326,41 @@
     <p class="lede"><strong>휴니드 스킨부스터</strong>와 <strong>페이스코드</strong> 중 하나를 선택해 직접 경험하고, 당신의 무드로 릴스를 만들어 주세요. 이 페이지는 캠페인 <strong>공식 가이드</strong>입니다.</p>
   </div>
 
+  <!-- PICKER — 시술 선택 -->
+  <section class="picker" id="picker">
+    <div class="pk-h">어떤 시술로 참여할까요?</div>
+    <p class="pk-s">시술을 선택하면 해당 시술 전용 가이드가 열려요.</p>
+    <div class="pk-list">
+      <button type="button" class="pk-card" data-k="hunide" aria-pressed="false" onclick="choose('hunide')">
+        <span class="pk-tag">Option A</span>
+        <b>휴니드 스킨부스터</b>
+        <span class="pk-v">50만원 상당</span>
+        <span class="pk-d">NPid 수면마취로 편안하게 받는 차세대 콜라겐 스킨부스터</span>
+        <span class="pk-go">휴니드 가이드 보기 ↓</span>
+      </button>
+      <button type="button" class="pk-card" data-k="facecode" aria-pressed="false" onclick="choose('facecode')">
+        <span class="pk-tag">Option B</span>
+        <b>페이스코드</b>
+        <span class="pk-v">30~150만원 상당</span>
+        <span class="pk-d">AI 얼굴·피부 분석과 의료진 진단으로 나에게 맞는 시술을 설계하는 맞춤형 프로그램</span>
+        <span class="pk-go">페이스코드 가이드 보기 ↓</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- GUIDE — 선택한 시술의 가이드 -->
+  <div id="guideWrap">
+  <div class="g-head">
+    <span class="eyebrow">Reels Guide</span>
+    <h2><span data-only="hunide">휴니드 스킨부스터</span><span data-only="facecode">페이스코드</span> 가이드</h2>
+    <p>선택한 시술 기준의 가이드만 보여드려요.</p>
+  </div>
+
   <!-- META -->
   <div class="meta">
     <div class="meta-cell"><span class="ic">🎬</span><div class="k">Format</div><div class="v">인스타 릴스<small>30초 이상</small></div></div>
     <div class="meta-cell"><span class="ic">💸</span><div class="k">고료</div><div class="v">시술 제공형<small>고료 없음</small></div></div>
-    <div class="meta-cell"><span class="ic">✨</span><div class="k">제공 시술</div><div class="v">두 시술 중 택1<small>휴니드 · 페이스코드</small></div></div>
+    <div class="meta-cell"><span class="ic">✨</span><div class="k">제공 시술</div><div class="v"><span data-only="hunide">휴니드<small>50만원 상당</small></span><span data-only="facecode">페이스코드<small>30~150만원 상당</small></span></div></div>
     <div class="meta-cell"><span class="ic">🗓️</span><div class="k">업로드</div><div class="v">시술 후 10일<small>이내 업로드</small></div></div>
   </div>
 
@@ -321,7 +369,8 @@
     <div class="sum get">
       <div class="sum-h"><span class="mk">+</span><b>받는 혜택</b><span class="en">You get</span></div>
       <ul>
-        <li><b>휴니드 스킨부스터</b> (50만원 상당) 또는 <b>페이스코드</b> (30~150만원 상당) 중 <b>택1</b> 시술</li>
+        <li data-only="hunide"><b>휴니드 스킨부스터</b> 시술 (50만원 상당)</li>
+        <li data-only="facecode"><b>페이스코드</b> 맞춤 시술 (30~150만원 상당)</li>
       </ul>
     </div>
     <div class="sum todo">
@@ -336,10 +385,11 @@
   </div>
 
   <nav class="secnav" aria-label="섹션 바로가기">
+    <div class="gbar"><b><span data-only="hunide">휴니드 스킨부스터</span><span data-only="facecode">페이스코드</span> 가이드</b><button type="button" onclick="changePick()">시술 변경 ↺</button></div>
     <ul>
       <li><a href="#concept">컨셉</a></li>
       <li><a href="#treatment">제공 시술</a></li>
-      <li><a href="#why">차별점</a></li>
+      <li data-only="hunide"><a href="#why">차별점</a></li>
       <li><a href="#reference">레퍼런스</a></li>
       <li><a href="#musthave">필수 항목</a></li>
       <li><a href="#guide">DO &amp; DON'T</a></li>
@@ -349,7 +399,7 @@
 
   <!-- 01 방향 -->
   <section class="block callout" id="concept">
-    <div class="sec-head"><div class="top"><span class="no">01</span><span class="label">Content Concept</span></div><h2>콘텐츠 컨셉</h2></div>
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">Content Concept</span></div><h2>콘텐츠 컨셉</h2></div>
     <p class="quote">"아, <span class="mark">저거</span> 나도 하고싶다"</p>
     <p>단순히 병원을 찍고 시술을 받는 후기 콘텐츠가 아닙니다. 영상을 본 사람이 자연스럽게 <span class="hl">"나도 해보고 싶다"</span>고 느껴지게 해주세요.</p>
     <div class="rule"></div>
@@ -358,12 +408,8 @@
 
   <!-- 02 제공 시술 -->
   <section class="block" id="treatment">
-    <div class="sec-head"><div class="top"><span class="no">02</span><span class="label">The Treatment</span></div><h2>제공 시술</h2><p class="sub">아래 두 시술 중 <strong style="color:var(--ink);font-weight:700">하나를 선택</strong>해 신청해 주세요.</p></div>
-    <div class="tabs" role="tablist">
-      <button type="button" class="tab" role="tab" data-k="hunide" aria-controls="panel-hunide" aria-selected="true" onclick="selTab('hunide')"><b>휴니드 스킨부스터</b><small>50만원 상당</small></button>
-      <button type="button" class="tab" role="tab" data-k="facecode" aria-controls="panel-facecode" aria-selected="false" onclick="selTab('facecode')"><b>페이스코드</b><small>30~150만원 상당</small></button>
-    </div>
-    <div class="tab-panel" role="tabpanel" id="panel-hunide">
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">The Treatment</span></div><h2>제공 시술</h2></div>
+    <div data-only="hunide">
     <div class="offer">
       <div class="nm"><small>제공 항목</small><b>휴니드 스킨부스터</b></div>
       <div class="pr"><span class="pp">50만</span><span class="ps">원 상당</span></div>
@@ -373,9 +419,9 @@
       <div class="step"><span class="sn">02</span><div><div class="st">피부 상담</div><div class="sd">id SRS-ai 시스템으로 피부 측정 후 맞춤 상담</div></div></div>
       <div class="step"><span class="sn">03</span><div><div class="st">시술</div><div class="sd">수면마취(NPid)로 편안하게 휴니드 시술</div></div></div>
     </div>
-    <button type="button" class="pick-btn" onclick="pickApply('휴니드 스킨부스터')">휴니드 스킨부스터로 신청하기 →</button>
+    <button type="button" class="pick-btn" onclick="goApply()">휴니드 스킨부스터 신청하기 →</button>
     </div>
-    <div class="tab-panel" role="tabpanel" id="panel-facecode" hidden>
+    <div data-only="facecode">
     <div class="offer">
       <div class="nm"><small>제공 항목</small><b>페이스코드</b></div>
       <div class="pr"><span class="pp">30~150만</span><span class="ps">원 상당</span></div>
@@ -388,13 +434,13 @@
       <div class="step"><span class="sn">04</span><div><div class="st">맞춤 시술</div><div class="sd">설계된 계획에 따라 개인의 얼굴·피부 상태에 적합한 시술 진행</div></div></div>
       <div class="step"><span class="sn">05</span><div><div class="st">사후 관리</div><div class="sd">시술 후 상태를 확인하고, 이후의 관리 방향과 지속 관리 계획을 안내</div></div></div>
     </div>
-    <button type="button" class="pick-btn" onclick="pickApply('페이스코드')">페이스코드로 신청하기 →</button>
+    <button type="button" class="pick-btn" onclick="goApply()">페이스코드 신청하기 →</button>
     </div>
   </section>
 
   <!-- 03 차별점 -->
-  <section class="block" id="why">
-    <div class="sec-head"><div class="top"><span class="no">03</span><span class="label">Why ID</span></div><h2>ID만의 차별점</h2><p class="sub">메디컬 뷰티 노하우를 담아 아이디에서 새롭게 출시한 <strong style="color:var(--ink);font-weight:700">차세대 콜라겐 스킨부스터</strong>입니다. 릴스에 녹여주면 좋은 두 포인트예요.</p><span class="only-tag">✦ 휴니드 스킨부스터 기준</span></div>
+  <section class="block" id="why" data-only="hunide">
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">Why ID</span></div><h2>ID만의 차별점</h2><p class="sub">메디컬 뷰티 노하우를 담아 아이디에서 새롭게 출시한 <strong style="color:var(--ink);font-weight:700">차세대 콜라겐 스킨부스터</strong>입니다. 릴스에 녹여주면 좋은 두 포인트예요.</p></div>
     <div class="diff">
       <div class="diff-card">
         <span class="diff-tag">Point 01</span>
@@ -413,17 +459,13 @@
 
   <!-- 04 레퍼런스 -->
   <section class="block" id="reference">
-    <div class="sec-head"><div class="top"><span class="no">04</span><span class="label">Reference</span></div><h2>레퍼런스</h2><p class="sub">아래 컨셉은 <strong style="color:var(--ink);font-weight:700">참고용 제안</strong>입니다. 꼭 이 중에서 고르지 않아도 되며, 방향에 맞는다면 본인 스타일대로 자유롭게 제작하셔도 좋습니다.</p></div>
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">Reference</span></div><h2>레퍼런스</h2><p class="sub">아래 컨셉은 <strong style="color:var(--ink);font-weight:700">참고용 제안</strong>입니다. 꼭 이 중에서 고르지 않아도 되며, 방향에 맞는다면 본인 스타일대로 자유롭게 제작하셔도 좋습니다.</p></div>
     <a class="ref-link" href="https://www.instagram.com/reels/DZr2oSLzKJk/" target="_blank" rel="noopener">
       <span class="ref-ic">▶</span>
       <span class="ref-txt"><b>공통 레퍼런스</b><span>이런 무드로 제작해 주세요 · 인스타 릴스 보기</span></span>
       <span class="ref-arrow">↗</span>
     </a>
-    <div class="tabs" role="tablist">
-      <button type="button" class="tab" role="tab" data-k="hunide" aria-controls="ref-hunide" aria-selected="true" onclick="selTab('hunide')"><b>휴니드 스킨부스터</b><small>레퍼런스 4</small></button>
-      <button type="button" class="tab" role="tab" data-k="facecode" aria-controls="ref-facecode" aria-selected="false" onclick="selTab('facecode')"><b>페이스코드</b><small>레퍼런스 4</small></button>
-    </div>
-    <div class="accordion tab-panel" role="tabpanel" id="ref-hunide">
+    <div class="accordion" data-only="hunide">
       <details class="acc-item" open>
         <summary class="acc-header"><span class="acc-num">01</span><span class="acc-titles"><span class="acc-title">요즘 나 피부 왜 이래?</span><span class="acc-subtitle">시술 전후 변화 기록형</span></span><span class="vb-mark">+</span></summary>
         <div class="acc-panel">
@@ -469,7 +511,7 @@
         </div>
       </details>
     </div>
-    <div class="accordion tab-panel" role="tabpanel" id="ref-facecode" hidden>
+    <div class="accordion" data-only="facecode">
       <details class="acc-item" open>
         <summary class="acc-header"><span class="acc-num">01</span><span class="acc-titles"><span class="acc-title">내 얼굴엔 어떤 관리가 맞을까?</span><span class="acc-subtitle">고민 공감 · 맞춤 상담형</span></span><span class="vb-mark">+</span></summary>
         <div class="acc-panel">
@@ -519,7 +561,7 @@
 
   <!-- 05 필수 항목 -->
   <section class="block" id="musthave">
-    <div class="sec-head"><div class="top"><span class="no">05</span><span class="label">Must-Haves</span></div><h2>필수 항목</h2><p class="sub">아래 항목은 꼭 포함해 주세요.</p></div>
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">Must-Haves</span></div><h2>필수 항목</h2><p class="sub">아래 항목은 꼭 포함해 주세요.</p></div>
     <div class="field-label">필수 해시태그 · 계정 멘션</div>
     <div class="copybox" style="padding:16px 18px;color:var(--muted);font-weight:600">추후 협의 후 안내드립니다.</div>
     <ul class="req-list">
@@ -533,14 +575,15 @@
 
   <!-- 06 DO & DON'T -->
   <section class="block" id="guide">
-    <div class="sec-head"><div class="top"><span class="no">06</span><span class="label">Guidelines</span></div><h2>DO &amp; DON'T</h2></div>
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">Guidelines</span></div><h2>DO &amp; DON'T</h2></div>
     <div class="dd">
       <div class="dd-col dd-do">
         <div class="dd-head">Do</div>
         <ul>
           <li>일상·자기관리 무드 안에 시술을 자연스럽게 녹이기</li>
-          <li>수면마취·AI 피부측정 등 차별점을 '경험담'으로 전달</li>
-          <li>시술명 정확히 언급 — <b>휴니드 스킨부스터</b> 또는 <b>페이스코드</b></li>
+          <li data-only="hunide">수면마취·AI 피부측정 등 차별점을 '경험담'으로 전달</li>
+          <li data-only="facecode">AI 얼굴·피부 분석과 의료진 맞춤 상담 과정을 '경험담'으로 전달</li>
+          <li>시술명 정확히 언급 — <b data-only="hunide">휴니드 스킨부스터</b><b data-only="facecode">페이스코드</b></li>
           <li>자연광·무보정 등 리얼한 변화로 신뢰감 주기</li>
           <li>필수 해시태그·멘션 포함, 3개월 이상 게시 유지</li>
         </ul>
@@ -561,17 +604,15 @@
 
   <!-- 07 신청 -->
   <section class="block" id="apply">
-    <div class="sec-head"><div class="top"><span class="no">07</span><span class="label">Apply</span></div><h2>캠페인 신청하기</h2></div>
+    <div class="sec-head"><div class="top"><span class="no"></span><span class="label">Apply</span></div><h2>캠페인 신청하기</h2></div>
     <div class="apply">
       <div id="formWrap">
         <p class="apply-intro">마감 없이 <strong>상시 모집</strong>되며, 촬영·방문 일정은 선정 후 1:1로 협의합니다. 2차 활용 동의 후 제출이 가능하고, 선정 결과는 개별 안내드립니다.</p>
         <form class="form" id="applyForm" onsubmit="submitForm(event)">
           <div class="field">
-            <label>지원 시술 <span class="star">*</span> <span class="opt">하나만 선택</span></label>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="product" value="휴니드 스킨부스터" required><span class="cbox"><b>휴니드 스킨부스터</b><small>50만원 상당</small></span></label>
-              <label class="choice"><input type="radio" name="product" value="페이스코드" required><span class="cbox"><b>페이스코드</b><small>30~150만원 상당</small></span></label>
-            </div>
+            <label>지원 시술 <span class="star">*</span></label>
+            <div class="fixed-pick"><b id="pickName">-</b><button type="button" onclick="changePick()">시술 변경</button></div>
+            <input type="hidden" name="product" id="productInput">
           </div>
           <div class="field"><label>이름 <span class="star">*</span></label><input type="text" name="name" required autocomplete="name" placeholder="홍길동"></div>
           <div class="field"><label>인스타그램 링크 <span class="star">*</span></label><input type="text" name="instagram" required placeholder="https://instagram.com/your_id"></div>
@@ -602,6 +643,7 @@
     <p class="legal">※ 제출하신 개인정보(지원 시술·이름·연락처·인스타그램·이메일·방문희망일)는 캠페인 선정 및 진행 안내 목적으로만 사용되며, 캠페인 종료 후 파기됩니다.</p>
     <p class="legal">※ 신청 완료 후 방문 또는 시술 단계에서 중도 취소 시 비용이 청구될 수 있습니다.</p>
   </section>
+  </div><!-- /guideWrap -->
 
   <footer>
     <div class="fmark">ID 피부과 <span class="amp">×</span> SIRIAI</div>
@@ -613,7 +655,7 @@
 
 <div class="cta-bar" id="ctaBar">
   <div class="inner">
-    <div class="cta-meta"><b>휴니드 · 페이스코드 릴스 협업</b><span>두 시술 중 택1 · 시술 제공형 · 상시 모집</span></div>
+    <div class="cta-meta"><b><span data-only="hunide">휴니드 스킨부스터</span><span data-only="facecode">페이스코드</span> 릴스 협업</b><span>고료 없음 · 시술 제공형 · 상시 모집</span></div>
     <button type="button" onclick="goApply()">신청하기 →</button>
   </div>
 </div>
@@ -629,19 +671,25 @@ function cp(btn, box){
     setTimeout(function(){ btn.textContent = '복사'; btn.classList.remove('done'); }, 1600);
   });
 }
-/* 시술 탭 — 02 제공 시술 · 04 레퍼런스 탭이 함께 전환됨 */
-function selTab(k){
-  document.querySelectorAll('.tab[data-k]').forEach(function(t){
-    var on = t.getAttribute('data-k') === k;
-    t.setAttribute('aria-selected', on ? 'true' : 'false');
-    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-  });
+/* 시술 선택 — 선택한 시술의 가이드만 표시 (?p=hunide / ?p=facecode 링크로 바로 열기 가능) */
+var PRODUCTS = { hunide:'휴니드 스킨부스터', facecode:'페이스코드' };
+function choose(k, instant){
+  if(!PRODUCTS[k]) return;
+  document.body.setAttribute('data-p', k);
+  document.querySelectorAll('.pk-card').forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-k') === k ? 'true' : 'false'); });
+  document.getElementById('pickName').textContent = PRODUCTS[k];
+  document.getElementById('productInput').value = PRODUCTS[k];
+  try{ history.replaceState(null, '', location.pathname + '?p=' + k); }catch(e){}
+  var g = document.getElementById('guideWrap');
+  if(instant) return;
+  g.classList.remove('rise'); void g.offsetWidth; g.classList.add('rise');
+  window.scrollTo({ top:g.offsetTop, behavior:'smooth' }); // offsetTop은 애니메이션 transform의 영향을 받지 않음
 }
-function pickApply(v){
-  var r = document.querySelector('input[name="product"][value="'+v+'"]');
-  if(r) r.checked = true;
-  goApply();
-}
+function changePick(){ document.getElementById('picker').scrollIntoView({ behavior:'smooth', block:'start' }); }
+(function(){
+  var m = location.search.match(/[?&]p=(hunide|facecode)/);
+  if(m) choose(m[1], true);
+})();
 /* 섹션 바로가기 — 현재 보고 있는 섹션 강조 */
 (function(){
   if(!('IntersectionObserver' in window)) return;
@@ -671,7 +719,7 @@ function fmtPhone(el){
   var bar = document.getElementById('ctaBar');
   var apply = document.getElementById('apply');
   var applyVisible = false;
-  function upd(){ bar.classList.toggle('show', window.scrollY > 520 && !applyVisible && !window.__submitted); }
+  function upd(){ bar.classList.toggle('show', !!document.body.getAttribute('data-p') && window.scrollY > 520 && !applyVisible && !window.__submitted); }
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ es.forEach(function(e){ applyVisible = e.isIntersecting; }); upd(); }, { threshold:0.01 }).observe(apply);
   }
