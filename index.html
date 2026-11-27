@@ -217,7 +217,11 @@
   .prefs{ display:flex; flex-direction:column; gap:10px; }
   .pref-row{ display:flex; align-items:center; gap:12px; }
   .pref-rank{ font-family:var(--futura); font-weight:600; font-size:14px; letter-spacing:.02em; color:var(--accent); width:40px; flex-shrink:0; text-align:center; white-space:nowrap; }
-  .pref-row input{ flex:1; }
+  .pref-row select{ flex:1; min-width:0; font-family:inherit; font-size:14px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:13px 30px 13px 13px; outline:none; -webkit-appearance:none; appearance:none; cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23A79F8F' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; transition:border-color .18s, background-color .18s; }
+  .pref-row select.pd{ flex:1.25; }
+  .pref-row select:focus{ border-color:var(--accent); background-color:#fff; }
+  .pref-row select:invalid, .pref-row select.empty{ color:var(--faint); }
   .consent{ display:flex; align-items:flex-start; gap:12px; background:var(--tint); border-radius:4px; padding:16px; cursor:pointer; }
   .consent input{ width:18px; height:18px; flex-shrink:0; margin-top:1px; accent-color:var(--accent); cursor:pointer; }
   .consent span{ font-size:12.5px; line-height:1.65; color:var(--body); }
@@ -482,12 +486,12 @@
           <div class="field"><label>휴대폰 번호 <span class="star">*</span></label><input type="tel" name="phone" required inputmode="numeric" autocomplete="tel" maxlength="13" oninput="fmtPhone(this)" placeholder="010-1234-5678"></div>
           <div class="field"><label>이메일 <span class="opt">(선택)</span></label><input type="email" name="email" autocomplete="email" placeholder="you@email.com"></div>
           <div class="field">
-            <label>방문 희망일 <span class="star">*</span> <span class="opt">가능한 날짜를 순서대로, 최대 3개</span></label>
-            <div class="date-notice">⚠ 시술은 수요일·목요일에만 가능합니다. 수/목 중 가능한 날짜만 적어주세요.</div>
+            <label>방문 희망일 <span class="star">*</span> <span class="opt">1순위 필수 · 2·3순위 선택</span></label>
+            <div class="date-notice">⚠ 시술은 수요일·목요일 오후 5시까지만 가능합니다. 가능한 날짜와 시간을 선택해 주세요.</div>
             <div class="prefs">
-              <div class="pref-row"><span class="pref-rank">1st</span><input type="text" name="date1" required placeholder="1순위 — 예: 2/18(수) 오후"></div>
-              <div class="pref-row"><span class="pref-rank">2nd</span><input type="text" name="date2" placeholder="2순위 — 예: 2/19(목) 오후 (선택)"></div>
-              <div class="pref-row"><span class="pref-rank">3rd</span><input type="text" name="date3" placeholder="3순위 — 예: 2/25(수) 오후 (선택)"></div>
+              <div class="pref-row"><span class="pref-rank">1st</span><select class="pd" name="d1" required aria-label="1순위 날짜"><option value="">날짜 선택</option></select><select class="pt" name="t1" required aria-label="1순위 시간"><option value="">시간</option></select></div>
+              <div class="pref-row"><span class="pref-rank">2nd</span><select class="pd" name="d2" aria-label="2순위 날짜"><option value="">날짜 선택</option></select><select class="pt" name="t2" aria-label="2순위 시간"><option value="">시간</option></select></div>
+              <div class="pref-row"><span class="pref-rank">3rd</span><select class="pd" name="d3" aria-label="3순위 날짜"><option value="">날짜 선택</option></select><select class="pt" name="t3" aria-label="3순위 시간"><option value="">시간</option></select></div>
             </div>
           </div>
           <label class="consent" for="consent">
@@ -550,6 +554,33 @@ function cp(btn, box){
   }, { rootMargin:'-45% 0px -50% 0px' });
   Object.keys(map).forEach(function(id){ var el = document.getElementById(id); if(el) io.observe(el); });
 })();
+/* 방문 희망일 — 수·목 날짜만, 시간은 오전 10시 ~ 오후 5시(30분 단위)만 선택 가능 */
+var PREF_WEEKS = 10, PREF_START = 10, PREF_END = 17;
+function fmtTime(h, m){ var ap = h < 12 ? '오전' : '오후', hh = h > 12 ? h - 12 : h; return ap + ' ' + hh + '시' + (m ? ' ' + m + '분' : ''); }
+(function(){
+  var DAY = ['일','월','화','수','목','금','토'], dates = [], d = new Date();
+  d.setHours(0,0,0,0); d.setDate(d.getDate() + 1);
+  for(var i = 0; i < PREF_WEEKS * 7; i++, d.setDate(d.getDate() + 1)){
+    var w = d.getDay();
+    if(w === 3 || w === 4) dates.push((d.getMonth()+1) + '/' + d.getDate() + '(' + DAY[w] + ')');
+  }
+  var times = [];
+  for(var h = PREF_START; h <= PREF_END; h++){ times.push(fmtTime(h, 0)); if(h < PREF_END) times.push(fmtTime(h, 30)); }
+  function fill(sel, list){ list.forEach(function(v){ var o = document.createElement('option'); o.value = o.textContent = v; sel.appendChild(o); }); }
+  [1,2,3].forEach(function(n){
+    var ds = document.querySelector('select[name="d'+n+'"]'), ts = document.querySelector('select[name="t'+n+'"]');
+    fill(ds, dates); fill(ts, times);
+    function sync(){
+      ds.classList.toggle('empty', !ds.value); ts.classList.toggle('empty', !ts.value);
+      if(n > 1){ ts.required = !!ds.value; ds.required = !!ts.value; }  /* 2·3순위: 날짜나 시간 중 하나를 고르면 둘 다 필수 */
+    }
+    ds.addEventListener('change', sync); ts.addEventListener('change', sync); sync();
+  });
+})();
+function prefVal(n){
+  var f = document.getElementById('applyForm').elements, dv = f['d'+n].value, tv = f['t'+n].value;
+  return dv && tv ? dv + ' ' + tv : '';
+}
 function consentToggle(cb){ document.getElementById('submitBtn').disabled = !cb.checked; }
 function goApply(){ document.getElementById('apply').scrollIntoView({ behavior:'smooth', block:'start' }); }
 function fmtPhone(el){
@@ -579,7 +610,7 @@ async function submitForm(ev){
     product:f['product'].value,
     name:f['name'].value.trim(), instagram:f['instagram'].value.trim(), phone:f['phone'].value.trim(),
     email:f['email'].value.trim(),
-    date1:f['date1'].value.trim(), date2:f['date2'].value.trim(), date3:f['date3'].value.trim(),
+    date1:prefVal(1), date2:prefVal(2), date3:prefVal(3),
     consent:f['consent'].checked
   };
   var btn = document.getElementById('submitBtn');
