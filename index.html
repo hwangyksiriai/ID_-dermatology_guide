@@ -554,8 +554,8 @@ function cp(btn, box){
   }, { rootMargin:'-45% 0px -50% 0px' });
   Object.keys(map).forEach(function(id){ var el = document.getElementById(id); if(el) io.observe(el); });
 })();
-/* 방문 희망일 — 수·목 날짜만, 시간은 오전 10시 ~ 오후 5시(30분 단위)만 선택 가능 */
-var PREF_WEEKS = 10, PREF_START = 10, PREF_END = 17;
+/* 방문 희망일 — 수·목 날짜만, 시간은 오전 10시 ~ 오후 5시(30분 단위, 점심시간 12시대 제외)만 선택 가능 */
+var PREF_WEEKS = 10, PREF_START = 10, PREF_END = 17, PREF_SKIP_HOURS = [12];
 function fmtTime(h, m){ var ap = h < 12 ? '오전' : '오후', hh = h > 12 ? h - 12 : h; return ap + ' ' + hh + '시' + (m ? ' ' + m + '분' : ''); }
 (function(){
   var DAY = ['일','월','화','수','목','금','토'], dates = [], d = new Date();
@@ -565,7 +565,7 @@ function fmtTime(h, m){ var ap = h < 12 ? '오전' : '오후', hh = h > 12 ? h -
     if(w === 3 || w === 4) dates.push((d.getMonth()+1) + '/' + d.getDate() + '(' + DAY[w] + ')');
   }
   var times = [];
-  for(var h = PREF_START; h <= PREF_END; h++){ times.push(fmtTime(h, 0)); if(h < PREF_END) times.push(fmtTime(h, 30)); }
+  for(var h = PREF_START; h <= PREF_END; h++){ if(PREF_SKIP_HOURS.indexOf(h) !== -1) continue; times.push(fmtTime(h, 0)); if(h < PREF_END) times.push(fmtTime(h, 30)); }
   function fill(sel, list){ list.forEach(function(v){ var o = document.createElement('option'); o.value = o.textContent = v; sel.appendChild(o); }); }
   [1,2,3].forEach(function(n){
     var ds = document.querySelector('select[name="d'+n+'"]'), ts = document.querySelector('select[name="t'+n+'"]');
